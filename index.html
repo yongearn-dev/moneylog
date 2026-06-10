@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MoneyLog">
+<meta name="theme-color" content="#060810">
+<title>MoneyLog</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#060810;--bg2:#0D1018;--bg3:#131620;--bg4:#1A1E2C;--bg5:#20253A;
+  --border:#1E2236;--border2:#2A3050;
+  --accent:#7C6FFF;--accent2:#5B50CC;
+  --green:#36F09A;--red:#FF4060;--orange:#FF7040;
+  --text:#DDE1F5;--muted:#4E5572;--dim:#2E3450;
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bot:env(safe-area-inset-bottom,0px);
+}
+/* ── Category colour slots ── */
+:root{
+  --cc0:#FF6B8A;--cc1:#FF9D5C;--cc2:#F5C842;--cc3:#4FE88A;--cc4:#4CB8F5;
+  --cc5:#A87DFF;--cc6:#FF7EC8;--cc7:#45D4AA;--cc8:#F07060;--cc9:#60D0EA;
+  --cc10:#FFB060;--cc11:#B0E060;--cc12:#7090D8;--cc13:#40C8B8;
+}
+html,body{background:var(--bg);min-height:100vh}
+body{color:var(--text);font-family:'DM Sans',sans-serif;padding-bottom:calc(66px + var(--safe-bot));overflow-x:hidden}
+input,select,button,textarea{font-family:inherit;color-scheme:dark}
+select option{background:var(--bg3);color:var(--text)}
+input[type=date]::-webkit-calendar-picker-indicator,
+input[type=month]::-webkit-calendar-picker-indicator{filter:invert(.6) brightness(1.2)}
+
+/* ── Header ── */
+.hdr{background:var(--bg2);border-bottom:1px solid var(--border);padding:calc(10px + var(--safe-top)) 13px 10px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.logo{font-size:17px;font-weight:800;letter-spacing:-.5px;color:var(--text)}
+.logo em{color:var(--accent);font-style:normal}
+.hdr-r{display:flex;gap:5px;align-items:center}
+.pill{background:var(--bg4);border:1px solid var(--border2);color:var(--text);border-radius:8px;padding:5px 8px;font-size:12px;font-weight:700;cursor:pointer;outline:none}
+.ibtn{background:transparent;border:none;color:var(--muted);cursor:pointer;padding:5px;display:flex;align-items:center;border-radius:7px}
+
+/* ── Nav ── */
+.nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border);display:flex;padding:5px 0 calc(6px + var(--safe-bot));z-index:50}
+.nb{flex:1;border:none;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--dim);font-size:10px;font-weight:700;padding:0}
+.nb.on{color:var(--accent)}
+.ni{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;border:1px solid transparent}
+.nb.on .ni{background:#7C6FFF18;border-color:#7C6FFF30}
+
+/* ── Tabs ── */
+.tabs{display:flex;gap:3px;background:var(--bg3);border-radius:11px;padding:3px}
+.tab{flex:1;padding:7px 3px;border-radius:9px;border:none;cursor:pointer;font-size:13px;font-weight:700;background:transparent;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap}
+.tab.on{background:var(--bg5);color:var(--text)}
+
+/* ── Cards ── */
+.card{background:var(--bg3);border:1px solid var(--border);border-radius:15px;padding:13px 15px}
+.cg{background:linear-gradient(135deg,rgba(54,240,154,.08),transparent);border-color:rgba(54,240,154,.18)}
+.cr{background:linear-gradient(135deg,rgba(255,64,96,.08),transparent);border-color:rgba(255,64,96,.18)}
+.cp{background:linear-gradient(135deg,rgba(124,111,255,.1),transparent);border-color:rgba(124,111,255,.2)}
+.co{background:linear-gradient(135deg,rgba(255,112,64,.08),transparent);border-color:rgba(255,112,64,.18)}
+.clabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
+.cval{font-size:19px;font-weight:800}
+
+/* ── Pages ── */
+.page{background:var(--bg);min-height:100vh;padding:12px 12px 20px;display:none}
+.page.on{display:block}
+.fl{margin-bottom:12px}
+.flabel{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;display:block}
+.inp{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg3);color:var(--text);font-size:15px;outline:none}
+.inp:focus{border-color:rgba(124,111,255,.5);background:var(--bg4)}
+.pbtn{width:100%;padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.sbtn{padding:5px 10px;border-radius:8px;border:1px solid var(--border2);background:var(--bg4);color:#9099BB;font-size:12px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.ebtn{padding:6px 10px;border-radius:8px;border:none;background:var(--accent);color:#fff;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.dbtn{padding:4px 9px;border-radius:7px;border:1px solid rgba(255,64,96,.3);background:rgba(255,64,96,.08);color:var(--red);font-size:12px;font-weight:600;cursor:pointer}
+
+/* ── Record row ── */
+.rrow{display:flex;align-items:center;gap:9px;padding:10px 11px;border-radius:12px;margin-bottom:6px;background:var(--bg3);border:1px solid var(--border)}
+.rico{width:32px;height:32px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+.rinfo{flex:1;min-width:0}
+.rcat{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rnote{color:var(--muted);font-weight:400}
+.rsub{font-size:11px;color:var(--muted);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rright{display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0}
+.ramt{font-size:14px;font-weight:800}
+.rconv{font-size:10px;color:var(--muted)}
+.rdel{border:none;background:transparent;cursor:pointer;color:var(--dim);padding:3px;display:flex;align-items:center;flex-shrink:0}
+
+/* ── Donut ── */
+.dwrap{display:flex;align-items:center;gap:12px}
+.dleg{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.lrow{display:flex;align-items:center;gap:6px;font-size:12px}
+.ldot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.lname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lpct{color:var(--muted);font-size:10px;flex-shrink:0}
+.lamt{font-weight:800;flex-shrink:0;font-size:12px}
+
+/* ── Modal ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;display:flex;align-items:flex-end;justify-content:center}
+.modal{background:var(--bg3);border:1px solid var(--border2);border-radius:20px 20px 0 0;padding:18px 13px calc(18px + var(--safe-bot));width:100%;max-width:480px}
+.mtitle{font-size:16px;font-weight:800;margin-bottom:13px}
+
+/* ── Toast ── */
+#toast{position:fixed;top:calc(14px + var(--safe-top));left:50%;transform:translateX(-50%);background:var(--bg4);border-radius:10px;padding:9px 17px;font-size:13px;font-weight:700;z-index:999;box-shadow:0 6px 30px rgba(0,0,0,.6);display:none;white-space:nowrap;border:1px solid transparent}
+
+/* ── Misc ── */
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.shdr{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center}
+.rowc{display:flex;align-items:center;gap:7px}
+.empty{text-align:center;color:var(--dim);padding:26px 0;font-size:13px}
+.tbadge{display:inline-flex;align-items:center;gap:5px;background:rgba(124,111,255,.1);border:1px solid rgba(124,111,255,.25);color:#A89FFF;border-radius:6px;padding:3px 9px;font-size:11px;font-weight:700;margin-bottom:8px}
+.rnote2{font-size:11px;color:var(--muted);margin-top:3px}
+.topic-filter-row{display:flex;gap:6px;margin-bottom:9px;overflow-x:auto;padding-bottom:2px}
+.tpill{padding:4px 10px;border-radius:20px;border:1px solid var(--border2);background:var(--bg4);color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.tpill.on{background:rgba(124,111,255,.2);border-color:rgba(124,111,255,.5);color:#A89FFF}
+svg{display:block}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="logo">💰 <em>MoneyLog</em></div>
+  <div class="hdr-r">
+    <button class="pill" id="langBtn" onclick="toggleLang()">中文</button>
+    <select class="pill" id="currSel" onchange="setCurrency(this.value)">
+      <option value="HKD">HKD</option>
+      <option value="USD">USD</option>
+      <option value="THB">THB</option>
+    </select>
+    <button class="ibtn" onclick="exportCSV()">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+    </button>
+  </div>
+</div>
+<div id="toast"></div>
+
+<!-- ═══ DASHBOARD ═══ -->
+<div id="pg-dashboard" class="page on">
+  <div style="margin-bottom:9px">
+    <div class="tabs">
+      <button class="tab on" id="dt-personal" onclick="setDashTab('personal')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
+        <span data-t="personal"></span>
+      </button>
+      <button class="tab" id="dt-shared" onclick="setDashTab('shared')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        <span data-t="shared"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Topic filter pills (shared only) -->
+  <div id="topic-filter-row" style="display:none">
+    <div class="topic-filter-row" id="topic-pills"></div>
+  </div>
+
+  <div class="rowc" style="margin-bottom:9px">
+    <div class="tabs" style="flex-shrink:0">
+      <button class="tab on" id="vm-monthly" onclick="setVM('monthly')" data-t="month"></button>
+      <button class="tab" id="vm-daily" onclick="setVM('daily')" data-t="day"></button>
+    </div>
+    <input type="month" id="fMonth" class="inp" style="flex:1;padding:7px 9px;font-size:13px" onchange="render()">
+    <input type="date" id="fDay" class="inp" style="flex:1;padding:7px 9px;font-size:13px;display:none" onchange="render()">
+  </div>
+
+  <div style="text-align:right;font-size:11px;color:var(--muted);margin-bottom:6px">
+    <span data-t="showIn"></span> <strong id="dcur" style="color:var(--text)">HKD</strong>
+  </div>
+
+  <div class="sgrid" style="margin-bottom:8px">
+    <div class="card cg"><div class="clabel" style="color:var(--green)" data-t="income"></div><div class="cval" style="color:var(--green)" id="si">—</div></div>
+    <div class="card cr"><div class="clabel" style="color:var(--red)" data-t="expense"></div><div class="cval" style="color:var(--red)" id="se">—</div></div>
+  </div>
+  <div class="card" id="sn-card" style="margin-bottom:12px">
+    <div class="clabel" style="color:#8890BB" data-t="balance"></div>
+    <div style="font-size:24px;font-weight:800;letter-spacing:-1px" id="sn">—</div>
+  </div>
+
+  <div id="cat-sec" style="margin-bottom:12px">
+    <div class="shdr"><span data-t="expBreakdown"></span></div>
+    <div class="card"><div id="donut-area"></div></div>
+  </div>
+
+  <div>
+    <div class="shdr">
+      <span><span data-t="recent"></span> <span id="rcnt" style="color:var(--dim)"></span></span>
+      <button class="sbtn" onclick="goPage('list')" data-t="all"></button>
+    </div>
+    <div id="rlist"></div>
+  </div>
+</div>
+
+<!-- ═══ ADD ═══ -->
+<div id="pg-add" class="page">
+  <div style="font-size:17px;font-weight:800;margin-bottom:14px" data-t="addRecord"></div>
+  <div class="fl">
+    <label class="flabel" data-t="account"></label>
+    <div class="tabs">
+      <button class="tab on" id="at-personal" onclick="setAddScope('personal')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
+        <span data-t="personal"></span>
+      </button>
+      <button class="tab" id="at-shared" onclick="setAddScope('shared')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        <span data-t="shared"></span>
+      </button>
+    </div>
+  </div>
+  <div id="topic-fl" class="fl" style="display:none">
+    <label class="flabel" data-t="projTopic"></label>
+    <div style="display:flex;gap:7px">
+      <select class="inp" id="f-topic" style="flex:1"></select>
+      <button class="sbtn" onclick="openTopicModal()" style="flex-shrink:0">+ <span data-t="new"></span></button>
+    </div>
+  </div>
+  <div class="fl">
+    <label class="flabel" data-t="type"></label>
+    <div class="tabs">
+      <button class="tab on" id="ty-expense" onclick="setAddType('expense')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        <span data-t="expense"></span>
+      </button>
+      <button class="tab" id="ty-income" onclick="setAddType('income')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        <span data-t="income"></span>
+      </button>
+    </div>
+  </div>
+  <div class="fl">
+    <label class="flabel"><span data-t="amount"></span> (<span id="acur">HKD</span>)</label>
+    <input class="inp" type="number" inputmode="decimal" placeholder="0" id="f-amt">
+    <div class="rnote2" id="rprev"></div>
+  </div>
+  <div class="fl">
+    <label class="flabel" data-t="category"></label>
+    <select class="inp" id="f-cat"></select>
+  </div>
+  <div class="fl">
+    <label class="flabel" data-t="date"></label>
+    <input class="inp" type="date" id="f-date">
+  </div>
+  <div class="fl" style="margin-bottom:18px">
+    <label class="flabel" data-t="note"></label>
+    <input class="inp" type="text" id="f-note">
+  </div>
+  <button class="pbtn" onclick="addRecord()">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+    <span data-t="save"></span>
+  </button>
+</div>
+
+<!-- ═══ LIST ═══ -->
+<div id="pg-list" class="page">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <div style="font-size:17px;font-weight:800" data-t="allRecords"></div>
+    <button class="ebtn" onclick="exportCSV()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      <span data-t="export"></span>
+    </button>
+  </div>
+  <div class="tabs" style="margin-bottom:10px">
+    <button class="tab on" id="lt-personal" onclick="setListTab('personal')">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
+      <span data-t="personal"></span>
+    </button>
+    <button class="tab" id="lt-shared" onclick="setListTab('shared')">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      <span data-t="shared"></span>
+    </button>
+  </div>
+  <div id="alist"></div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav">
+  <button class="nb on" id="nv-dashboard" onclick="goPage('dashboard')">
+    <div class="ni"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+    <span data-t="overview"></span>
+  </button>
+  <button class="nb" id="nv-add" onclick="goPage('add')">
+    <div class="ni"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+    <span data-t="add"></span>
+  </button>
+  <button class="nb" id="nv-list" onclick="goPage('list')">
+    <div class="ni"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></div>
+    <span data-t="records"></span>
+  </button>
+</nav>
+
+<!-- ═══ TOPIC MODAL ═══ -->
+<div class="overlay" id="tmodal" style="display:none" onclick="if(event.target===this)closeTopicModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="mtitle" data-t="manageTopics"></div>
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <input class="inp" type="text" id="new-topic" style="flex:1">
+      <button class="pbtn" style="width:auto;padding:10px 14px" onclick="doAddTopic()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
+    <div id="tlist"></div>
+    <button class="sbtn" style="width:100%;justify-content:center;margin-top:10px" onclick="closeTopicModal()" data-t="close"></button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// CATEGORY KEYS — language-independent internal IDs
+// Each category has a stable key. Display labels come from CAT_LABELS[lang][key].
+// This fixes the bug where switching language caused chart to split categories.
+// ═══════════════════════════════════════════════════════
+const CAT_KEYS = {
+  personal: {
+    expense: ['food','transport','shopping','entertainment','medical','accommodation','phone','others'],
+    income:  ['salary','transfer','others_inc']
+  },
+  shared: {
+    expense: ['dining_s','rent','utilities','office','transport_s','accommodation_s','repairs','misc','others_s'],
+    income:  ['remittance_s','donation_s','others_si']
+  }
+};
+
+const CAT_LABELS = {
+  en: {
+    personal: {
+      expense: ['Food & Drink','Transport/Fuel','Shopping','Entertainment','Medical','Accommodation','Phone/Internet','Others'],
+      income:  ['Salary','Transfer In','Others']
+    },
+    shared: {
+      expense: ['Dining','Rent','Utilities','Office Supplies','Transport/Fuel','Accommodation','Repairs','Miscellaneous','Others'],
+      income:  ['Remittance','Offering/Donation','Others']
+    }
+  },
+  zh: {
+    personal: {
+      expense: ['飲食','交通/油費','購物','娛樂','醫療','住宿','電話/網絡','其他'],
+      income:  ['出糧','匯款','其他']
+    },
+    shared: {
+      expense: ['餐飲','租金','水電費','辦公室雜費','交通/油費','住宿','維修','雜項','其他'],
+      income:  ['匯款','奉獻','其他']
+    }
+  }
+};
+
+// Get the category key from a stored record
+// Stored records have r.catKey (new) or r.category (legacy display string)
+function getCatKey(r) {
+  if (r.catKey) return r.catKey;
+  // Legacy: try to find by matching display label across all langs
+  const scope = r.scope || 'personal';
+  const type  = r.type === 'income' ? 'income' : 'expense';
+  for (const lng of ['en','zh']) {
+    const labels = CAT_LABELS[lng][scope][type];
+    const keys   = CAT_KEYS[scope][type];
+    const idx = labels.indexOf(r.category);
+    if (idx !== -1) return keys[idx];
+  }
+  return r.category; // fallback
+}
+
+function getCatLabel(key, scope, type) {
+  const keys   = CAT_KEYS[scope][type];
+  const labels = CAT_LABELS[lang][scope][type];
+  const idx = keys.indexOf(key);
+  return idx !== -1 ? labels[idx] : key;
+}
+
+// ═══════════════════════════════════════════════════════
+// CATEGORY COLOURS — keyed by catKey, stable across languages
+// ═══════════════════════════════════════════════════════
+const CC = ['#FF6B8A','#FF9D5C','#F5C842','#4FE88A','#4CB8F5',
+            '#A87DFF','#FF7EC8','#45D4AA','#F07060','#60D0EA',
+            '#FFB060','#B0E060','#7090D8','#40C8B8'];
+const _colorCache = {};
+let _colorIdx = 0;
+function catColor(key) {
+  if (!_colorCache[key]) { _colorCache[key] = CC[_colorIdx++ % CC.length]; }
+  return _colorCache[key];
+}
+// Pre-assign colours in a stable order so they don't change between renders
+(function seedColors(){
+  const allKeys = [
+    ...CAT_KEYS.personal.expense, ...CAT_KEYS.personal.income,
+    ...CAT_KEYS.shared.expense,   ...CAT_KEYS.shared.income
+  ];
+  allKeys.forEach(k => catColor(k));
+})();
+
+// ═══════════════════════════════════════════════════════
+// i18n
+// ═══════════════════════════════════════════════════════
+const T = {
+  en:{
+    personal:'Personal',shared:'Shared',month:'Month',day:'Day',
+    showIn:'Shown in',income:'Income',expense:'Expense',balance:'Balance',
+    expBreakdown:'Expense Breakdown',recent:'Recent',all:'All',
+    addRecord:'Add Record',account:'Account',projTopic:'Project / Topic',
+    new:'New',type:'Type',amount:'Amount',category:'Category',
+    date:'Date',note:'Note (optional)',save:'Save Record',
+    allRecords:'All Records',export:'Export',overview:'Overview',
+    add:'Add',records:'Records',manageTopics:'Manage Topics',close:'Close',
+    noRec:'No records yet',noRecAll:'No records',allTopics:'All',
+    deleted:'Deleted',saved:'Saved!',exported:'Exported!',
+    eAmt:'Enter a valid amount',eCat:'Select a category',eDate:'Select a date',
+    selTopic:'— Select topic —',
+  },
+  zh:{
+    personal:'個人',shared:'公數',month:'月',day:'日',
+    showIn:'顯示貨幣',income:'收入',expense:'支出',balance:'結餘',
+    expBreakdown:'支出分類',recent:'最近',all:'全部',
+    addRecord:'新增記錄',account:'帳目',projTopic:'項目主題',
+    new:'新增',type:'類型',amount:'金額',category:'類別',
+    date:'日期',note:'備注（可選）',save:'確認儲存',
+    allRecords:'所有記錄',export:'匯出',overview:'總覽',
+    add:'新增',records:'記錄',manageTopics:'管理主題',close:'關閉',
+    noRec:'暫無記錄',noRecAll:'暫無記錄',allTopics:'全部',
+    deleted:'已刪除',saved:'已儲存！',exported:'已匯出！',
+    eAmt:'請輸入有效金額',eCat:'請選擇類別',eDate:'請選擇日期',
+    selTopic:'— 選擇主題 —',
+  }
+};
+let lang = localStorage.getItem('ml_lang') || 'en';
+const tr = k => T[lang][k] || k;
+
+function applyLang() {
+  document.querySelectorAll('[data-t]').forEach(el => { el.textContent = tr(el.dataset.t); });
+  document.getElementById('langBtn').textContent = lang === 'en' ? '中文' : 'EN';
+  document.getElementById('f-note').placeholder = tr('note');
+  document.getElementById('new-topic').placeholder = tr('projTopic');
+  refreshTopicSel();
+  updateCats();
+  render();
+  renderList();
+}
+function toggleLang() {
+  lang = lang === 'en' ? 'zh' : 'en';
+  localStorage.setItem('ml_lang', lang);
+  applyLang();
+}
+
+// ═══════════════════════════════════════════════════════
+// CURRENCY
+// ═══════════════════════════════════════════════════════
+const TO_HKD = { HKD:1, USD:7.78, THB:1/4.1 };
+const SYM = { HKD:'HK$', USD:'US$', THB:'฿' };
+const toHKD   = (a,c) => a * (TO_HKD[c] || 1);
+const fromHKD = (a,c) => a / (TO_HKD[c] || 1);
+const convert = (a,from,to) => from===to ? a : fromHKD(toHKD(a,from),to);
+function fmt(a, c) {
+  c = c || currency;
+  const v = Math.round(a*10)/10;
+  return (SYM[c]||c) + new Intl.NumberFormat('en',{minimumFractionDigits:0,maximumFractionDigits:1}).format(v);
+}
+
+// ═══════════════════════════════════════════════════════
+// STATE + STORAGE
+// ═══════════════════════════════════════════════════════
+const SK = 'moneylog_v5';
+const HY = 183*86400*1000;
+let records=[], topics=[], currency='HKD';
+let dashScope='personal', listScope='personal', addScope='personal';
+let addType_='expense', viewMode='monthly';
+let addTopicSel='', dashTopicFilter=''; // '' = show all
+
+const today     = () => new Date().toISOString().slice(0,10);
+const thisMonth = () => today().slice(0,7);
+
+function loadData() {
+  try {
+    const d = localStorage.getItem(SK);
+    if (d) { const p=JSON.parse(d); records=p.r||[]; topics=p.t||[]; currency=p.c||'HKD'; lang=p.l||lang; }
+  } catch {}
+  records = records.filter(r => new Date(r.date).getTime() > Date.now()-HY);
+}
+function save() {
+  localStorage.setItem(SK, JSON.stringify({r:records,t:topics,c:currency,l:lang}));
+}
+
+// ═══════════════════════════════════════════════════════
+// TOPICS
+// ═══════════════════════════════════════════════════════
+function refreshTopicSel() {
+  const sel = document.getElementById('f-topic');
+  sel.innerHTML = `<option value="">${tr('selTopic')}</option>`
+    + topics.map(tp=>`<option value="${tp.id}"${tp.id===addTopicSel?' selected':''}>${tp.name}</option>`).join('');
+}
+function openTopicModal() { renderTopicList(); document.getElementById('tmodal').style.display='flex'; }
+function closeTopicModal() { document.getElementById('tmodal').style.display='none'; refreshTopicSel(); }
+function doAddTopic() {
+  const inp = document.getElementById('new-topic');
+  const name = inp.value.trim(); if (!name) return;
+  topics.push({id:Date.now().toString(), name, date:today()});
+  save(); inp.value=''; renderTopicList(); refreshTopicSel(); renderTopicPills();
+}
+function delTopic(id) {
+  topics = topics.filter(tp=>tp.id!==id);
+  if (addTopicSel===id) addTopicSel='';
+  if (dashTopicFilter===id) dashTopicFilter='';
+  save(); renderTopicList(); refreshTopicSel(); renderTopicPills();
+}
+function renderTopicList() {
+  const el = document.getElementById('tlist');
+  if (!topics.length) { el.innerHTML=`<div class="empty">${tr('noRecAll')}</div>`; return; }
+  el.innerHTML = topics.map(tp=>`
+    <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)">
+      <div style="flex:1;font-size:14px;font-weight:700">${tp.name}</div>
+      <div style="font-size:11px;color:var(--muted)">${tp.date}</div>
+      <button class="dbtn" onclick="delTopic('${tp.id}')">✕</button>
+    </div>`).join('');
+}
+
+// Topic filter pills in dashboard (shared view)
+function renderTopicPills() {
+  const row = document.getElementById('topic-filter-row');
+  const pills = document.getElementById('topic-pills');
+  if (dashScope !== 'shared' || !topics.length) { row.style.display='none'; return; }
+  row.style.display = '';
+  pills.innerHTML = `<button class="tpill${dashTopicFilter===''?' on':''}" onclick="setTopicFilter('')">${tr('allTopics')}</button>`
+    + topics.map(tp=>`<button class="tpill${dashTopicFilter===tp.id?' on':''}" onclick="setTopicFilter('${tp.id}')">${tp.name}</button>`).join('');
+}
+function setTopicFilter(id) {
+  dashTopicFilter = id;
+  renderTopicPills();
+  render();
+}
+
+// ═══════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════
+const PAGES = ['dashboard','add','list'];
+function goPage(p) {
+  PAGES.forEach(id => {
+    document.getElementById('pg-'+id).classList.toggle('on', id===p);
+    document.getElementById('nv-'+id).classList.toggle('on', id===p);
+  });
+  if (p==='list') renderList();
+  if (p==='dashboard') render();
+}
+
+// ═══════════════════════════════════════════════════════
+// DASHBOARD
+// ═══════════════════════════════════════════════════════
+function setDashTab(s) {
+  dashScope = s;
+  if (s !== 'shared') dashTopicFilter = '';
+  ['personal','shared'].forEach(x=>document.getElementById('dt-'+x).classList.toggle('on',x===s));
+  renderTopicPills();
+  render();
+}
+function setVM(m) {
+  viewMode = m;
+  ['monthly','daily'].forEach(x=>document.getElementById('vm-'+x).classList.toggle('on',x===m));
+  document.getElementById('fMonth').style.display = m==='monthly'?'':'none';
+  document.getElementById('fDay').style.display   = m==='daily'?'':'none';
+  render();
+}
+function getFiltered() {
+  const fm = document.getElementById('fMonth').value;
+  const fd = document.getElementById('fDay').value;
+  return records.filter(r => {
+    if (r.scope !== dashScope) return false;
+    const dateMatch = viewMode==='monthly' ? r.date.startsWith(fm) : r.date===fd;
+    if (!dateMatch) return false;
+    // Topic filter: only applied for shared scope
+    if (dashScope==='shared' && dashTopicFilter) return r.topicId === dashTopicFilter;
+    return true;
+  });
+}
+
+function render() {
+  document.getElementById('dcur').textContent = currency;
+  renderTopicPills();
+
+  const recs = getFiltered();
+  const inc  = recs.filter(r=>r.type==='income').reduce((s,r)=>s+convert(r.amount,r.cur||'HKD',currency),0);
+  const exp  = recs.filter(r=>r.type==='expense').reduce((s,r)=>s+convert(r.amount,r.cur||'HKD',currency),0);
+  const net  = inc-exp;
+  document.getElementById('si').textContent = fmt(inc);
+  document.getElementById('se').textContent = fmt(exp);
+  document.getElementById('sn').textContent = fmt(net);
+  document.getElementById('sn').style.color = net>=0?'#A89FFF':'var(--orange)';
+  document.getElementById('sn-card').className = 'card '+(net>=0?'cp':'co');
+
+  // Expense by category KEY (language-independent)
+  const catMap = {};
+  recs.filter(r=>r.type==='expense').forEach(r => {
+    const k = getCatKey(r);
+    catMap[k] = (catMap[k]||0) + convert(r.amount,r.cur||'HKD',currency);
+  });
+  const cats = Object.entries(catMap).sort((a,b)=>b[1]-a[1]);
+  const sec = document.getElementById('cat-sec');
+  if (!cats.length) { sec.style.display='none'; return; }
+  sec.style.display = '';
+  document.getElementById('donut-area').innerHTML = buildDonut(cats, exp, recs[0]?.scope||dashScope, 'expense');
+
+  const sorted = [...recs].sort((a,b)=>b.date.localeCompare(a.date));
+  document.getElementById('rcnt').textContent = `(${sorted.length})`;
+  document.getElementById('rlist').innerHTML = sorted.length===0
+    ? `<div class="empty">${tr('noRec')}</div>`
+    : sorted.slice(0,8).map(r=>rowHTML(r)).join('');
+}
+
+// ═══════════════════════════════════════════════════════
+// DONUT CHART
+// ═══════════════════════════════════════════════════════
+function buildDonut(cats, total, scope, type) {
+  if (!total || !cats.length) return '';
+  const R=52, r=33, cx=60, cy=60, sz=120;
+  let paths='', angle=-Math.PI/2;
+  const slices = cats.slice(0,9);
+  const rest = cats.slice(9).reduce((s,[,v])=>s+v,0);
+  if (rest>0) slices.push(['others_overflow',rest]);
+
+  slices.forEach(([key,val]) => {
+    const pct = val/total;
+    const sw  = pct * 2 * Math.PI;
+    const x1=cx+R*Math.cos(angle), y1=cy+R*Math.sin(angle);
+    const x2=cx+R*Math.cos(angle+sw), y2=cy+R*Math.sin(angle+sw);
+    const x3=cx+r*Math.cos(angle+sw), y3=cy+r*Math.sin(angle+sw);
+    const x4=cx+r*Math.cos(angle), y4=cy+r*Math.sin(angle);
+    const lg = sw>Math.PI?1:0;
+    const col = catColor(key);
+    if (pct>0.001)
+      paths += `<path d="M${x1},${y1}A${R},${R} 0 ${lg},1 ${x2},${y2}L${x3},${y3}A${r},${r} 0 ${lg},0 ${x4},${y4}Z" fill="${col}" stroke="var(--bg)" stroke-width="1.5"/>`;
+    angle += sw;
+  });
+
+  const legendHTML = slices.map(([key,val]) => {
+    const pct = Math.round(val/total*100);
+    const col = catColor(key);
+    const label = key==='others_overflow'
+      ? (lang==='zh'?'其他':'Others')
+      : getCatLabel(key, scope, type);
+    return `<div class="lrow">
+      <div class="ldot" style="background:${col}"></div>
+      <div class="lname">${label}</div>
+      <div class="lpct">${pct}%</div>
+      <div class="lamt" style="color:${col}">${fmt(val)}</div>
+    </div>`;
+  }).join('');
+
+  const dispTotal = fmt(total).replace('HK$','$').replace('US$','$');
+  return `<div class="dwrap">
+    <svg width="${sz}" height="${sz}" viewBox="0 0 ${sz} ${sz}" style="flex-shrink:0">
+      ${paths}
+      <circle cx="${cx}" cy="${cy}" r="${r-2}" fill="var(--bg3)"/>
+      <text x="${cx}" y="${cy-4}" text-anchor="middle" font-size="9" fill="var(--muted)" font-family="DM Sans">${tr('expense')}</text>
+      <text x="${cx}" y="${cy+9}" text-anchor="middle" font-size="11" fill="var(--text)" font-family="DM Sans" font-weight="800">${dispTotal}</text>
+    </svg>
+    <div class="dleg">${legendHTML}</div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// LIST
+// ═══════════════════════════════════════════════════════
+function setListTab(s) {
+  listScope = s;
+  ['personal','shared'].forEach(x=>document.getElementById('lt-'+x).classList.toggle('on',x===s));
+  renderList();
+}
+function renderList() {
+  const all = records.filter(r=>r.scope===listScope).sort((a,b)=>b.date.localeCompare(a.date));
+  document.getElementById('alist').innerHTML = all.length===0
+    ? `<div class="empty">${tr('noRecAll')}</div>`
+    : all.map(r=>rowHTML(r)).join('');
+}
+
+function rowHTML(r) {
+  const isInc = r.type === 'income';
+  const rc  = r.cur || 'HKD';
+  const main = fmt(convert(r.amount, rc, currency));
+  const sub  = rc !== currency ? fmt(r.amount, rc) : null;
+  const tp   = r.topicId ? topics.find(x=>x.id===r.topicId) : null;
+  const key  = getCatKey(r);
+  const col  = isInc ? 'var(--green)' : catColor(key);
+  const bg   = isInc ? 'rgba(54,240,154,.1)' : catColor(key)+'22';
+  const scope = r.scope || 'personal';
+  const type  = isInc ? 'income' : 'expense';
+  const label = getCatLabel(key, scope, type);
+  const meta  = [r.date, r.scope==='personal'?tr('personal'):tr('shared')];
+  if (tp) meta.push('📋 '+tp.name);
+
+  return `<div class="rrow" id="rw-${r.id}">
+    <div class="rico" style="background:${bg};color:${col}">${isInc?'＋':'↓'}</div>
+    <div class="rinfo">
+      <div class="rcat" style="color:${col}">${label}${r.note?`<span class="rnote"> · ${r.note}</span>`:''}</div>
+      <div class="rsub">${meta.join(' · ')}</div>
+    </div>
+    <div class="rright">
+      <div class="ramt" style="color:${isInc?'var(--green)':'var(--red)'}">
+        ${isInc?'+':'-'}${main}
+      </div>
+      ${sub?`<div class="rconv">${sub}</div>`:''}
+    </div>
+    <button class="rdel" onclick="delRec('${r.id}')">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+    </button>
+  </div>`;
+}
+function delRec(id) {
+  records = records.filter(r=>r.id!==id); save();
+  const el = document.getElementById('rw-'+id); if(el) el.remove();
+  toast(tr('deleted')); render();
+}
+
+// ═══════════════════════════════════════════════════════
+// ADD FORM
+// ═══════════════════════════════════════════════════════
+function setAddScope(s) {
+  addScope = s;
+  ['personal','shared'].forEach(x=>document.getElementById('at-'+x).classList.toggle('on',x===s));
+  document.getElementById('topic-fl').style.display = s==='shared' ? '' : 'none';
+  if (s==='shared') refreshTopicSel();
+  updateCats();
+}
+function setAddType(tp) {
+  addType_ = tp;
+  ['expense','income'].forEach(x=>document.getElementById('ty-'+x).classList.toggle('on',x===tp));
+  updateCats();
+}
+function setCurrency(v) {
+  currency = v;
+  document.getElementById('acur').textContent = v;
+  document.getElementById('dcur').textContent = v;
+  save(); updateRatePrev(); render(); renderList();
+}
+function updateCats() {
+  const keys   = CAT_KEYS[addScope][addType_];
+  const labels = (CAT_LABELS[lang]||CAT_LABELS.en)[addScope][addType_];
+  document.getElementById('f-cat').innerHTML =
+    `<option value="">— ${tr('category')} —</option>`
+    + keys.map((k,i)=>`<option value="${k}">${labels[i]}</option>`).join('');
+}
+function updateRatePrev() {
+  const el = document.getElementById('rprev');
+  const a  = parseFloat(document.getElementById('f-amt').value);
+  if (!a || currency==='HKD') { el.textContent=''; return; }
+  el.textContent = `≈ ${fmt(convert(a,currency,'HKD'),'HKD')}`;
+}
+function addRecord() {
+  const amt    = parseFloat(document.getElementById('f-amt').value);
+  const catKey = document.getElementById('f-cat').value;
+  const date   = document.getElementById('f-date').value;
+  const note   = document.getElementById('f-note').value.trim();
+  const topicId= addScope==='shared' ? document.getElementById('f-topic').value : '';
+  if (!amt||amt<=0)  return toast(tr('eAmt'),false);
+  if (!catKey)       return toast(tr('eCat'),false);
+  if (!date)         return toast(tr('eDate'),false);
+  // Store catKey (language-independent) + display label for legacy compat
+  const labels = (CAT_LABELS[lang]||CAT_LABELS.en)[addScope][addType_];
+  const keys   = CAT_KEYS[addScope][addType_];
+  const catLabel = labels[keys.indexOf(catKey)] || catKey;
+  records.unshift({
+    id:Date.now().toString(), type:addType_, amount:amt, cur:currency,
+    catKey, category:catLabel, date, note, scope:addScope, topicId
+  });
+  records = records.filter(r=>new Date(r.date).getTime()>Date.now()-HY);
+  save();
+  document.getElementById('f-amt').value='';
+  document.getElementById('f-note').value='';
+  document.getElementById('f-cat').value='';
+  document.getElementById('rprev').textContent='';
+  toast(tr('saved')); goPage('dashboard');
+}
+
+// ═══════════════════════════════════════════════════════
+// EXPORT
+// ═══════════════════════════════════════════════════════
+function exportCSV() {
+  const rows = [['Date','Type','Amount','Currency','HKD Equiv','Category Key','Category','Note','Account','Topic']];
+  [...records].sort((a,b)=>a.date.localeCompare(b.date)).forEach(r => {
+    const tp  = r.topicId ? topics.find(x=>x.id===r.topicId) : null;
+    const key = getCatKey(r);
+    rows.push([r.date, r.type==='income'?'Income':'Expense', r.amount, r.cur||'HKD',
+      Math.round(toHKD(r.amount,r.cur||'HKD')*10)/10,
+      key, r.category||'', r.note||'',
+      r.scope==='personal'?'Personal':'Shared', tp?tp.name:''
+    ]);
+  });
+  const csv = rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const url = URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'}));
+  const a = document.createElement('a'); a.href=url; a.download=`MoneyLog_${today()}.csv`; a.click();
+  URL.revokeObjectURL(url); toast(tr('exported'));
+}
+
+// ═══════════════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════════════
+let _tt;
+function toast(msg, ok=true) {
+  const el = document.getElementById('toast');
+  el.textContent=msg; el.style.display='block';
+  el.style.borderColor=ok?'rgba(124,111,255,.4)':'rgba(255,64,96,.4)';
+  el.style.color=ok?'#A89FFF':'var(--red)';
+  clearTimeout(_tt); _tt=setTimeout(()=>el.style.display='none',2200);
+}
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+loadData();
+document.getElementById('fMonth').value = thisMonth();
+document.getElementById('fDay').value   = today();
+document.getElementById('f-date').value = today();
+document.getElementById('currSel').value= currency;
+document.getElementById('acur').textContent = currency;
+document.getElementById('f-amt').addEventListener('input', updateRatePrev);
+applyLang();
+</script>
+</body>
+</html>
