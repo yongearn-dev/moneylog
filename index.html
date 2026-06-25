@@ -15,16 +15,9 @@
   --bg:#060810;--bg2:#0D1018;--bg3:#131620;--bg4:#1A1E2C;--bg5:#20253A;
   --border:#1E2236;--border2:#2A3050;
   --accent:#7C6FFF;--accent2:#5B50CC;
-  --green:#36F09A;--red:#FF4060;--orange:#FF7040;
+  --green:#36F09A;--red:#FF4060;--orange:#FF7040;--yellow:#F5C842;
   --text:#DDE1F5;--muted:#4E5572;--dim:#2E3450;
-  --safe-top:env(safe-area-inset-top,0px);
-  --safe-bot:env(safe-area-inset-bottom,0px);
-}
-/* ── Category colour slots ── */
-:root{
-  --cc0:#FF6B8A;--cc1:#FF9D5C;--cc2:#F5C842;--cc3:#4FE88A;--cc4:#4CB8F5;
-  --cc5:#A87DFF;--cc6:#FF7EC8;--cc7:#45D4AA;--cc8:#F07060;--cc9:#60D0EA;
-  --cc10:#FFB060;--cc11:#B0E060;--cc12:#7090D8;--cc13:#40C8B8;
+  --safe-top:env(safe-area-inset-top,0px);--safe-bot:env(safe-area-inset-bottom,0px);
 }
 html,body{background:var(--bg);min-height:100vh}
 body{color:var(--text);font-family:'DM Sans',sans-serif;padding-bottom:calc(66px + var(--safe-bot));overflow-x:hidden}
@@ -32,37 +25,28 @@ input,select,button,textarea{font-family:inherit;color-scheme:dark}
 select option{background:var(--bg3);color:var(--text)}
 input[type=date]::-webkit-calendar-picker-indicator,
 input[type=month]::-webkit-calendar-picker-indicator{filter:invert(.6) brightness(1.2)}
-
-/* ── Header ── */
 .hdr{background:var(--bg2);border-bottom:1px solid var(--border);padding:calc(10px + var(--safe-top)) 13px 10px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
-.logo{font-size:17px;font-weight:800;letter-spacing:-.5px;color:var(--text)}
+.logo{font-size:17px;font-weight:800;letter-spacing:-.5px}
 .logo em{color:var(--accent);font-style:normal}
 .hdr-r{display:flex;gap:5px;align-items:center}
 .pill{background:var(--bg4);border:1px solid var(--border2);color:var(--text);border-radius:8px;padding:5px 8px;font-size:12px;font-weight:700;cursor:pointer;outline:none}
 .ibtn{background:transparent;border:none;color:var(--muted);cursor:pointer;padding:5px;display:flex;align-items:center;border-radius:7px}
-
-/* ── Nav ── */
 .nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border);display:flex;padding:5px 0 calc(6px + var(--safe-bot));z-index:50}
 .nb{flex:1;border:none;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--dim);font-size:10px;font-weight:700;padding:0}
 .nb.on{color:var(--accent)}
 .ni{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;border:1px solid transparent}
 .nb.on .ni{background:#7C6FFF18;border-color:#7C6FFF30}
-
-/* ── Tabs ── */
 .tabs{display:flex;gap:3px;background:var(--bg3);border-radius:11px;padding:3px}
 .tab{flex:1;padding:7px 3px;border-radius:9px;border:none;cursor:pointer;font-size:13px;font-weight:700;background:transparent;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap}
 .tab.on{background:var(--bg5);color:var(--text)}
-
-/* ── Cards ── */
 .card{background:var(--bg3);border:1px solid var(--border);border-radius:15px;padding:13px 15px}
 .cg{background:linear-gradient(135deg,rgba(54,240,154,.08),transparent);border-color:rgba(54,240,154,.18)}
 .cr{background:linear-gradient(135deg,rgba(255,64,96,.08),transparent);border-color:rgba(255,64,96,.18)}
 .cp{background:linear-gradient(135deg,rgba(124,111,255,.1),transparent);border-color:rgba(124,111,255,.2)}
 .co{background:linear-gradient(135deg,rgba(255,112,64,.08),transparent);border-color:rgba(255,112,64,.18)}
+.cy{background:linear-gradient(135deg,rgba(245,200,66,.08),transparent);border-color:rgba(245,200,66,.2)}
 .clabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
 .cval{font-size:19px;font-weight:800}
-
-/* ── Pages ── */
 .page{background:var(--bg);min-height:100vh;padding:12px 12px 20px;display:none}
 .page.on{display:block}
 .fl{margin-bottom:12px}
@@ -73,8 +57,6 @@ input[type=month]::-webkit-calendar-picker-indicator{filter:invert(.6) brightnes
 .sbtn{padding:5px 10px;border-radius:8px;border:1px solid var(--border2);background:var(--bg4);color:#9099BB;font-size:12px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
 .ebtn{padding:6px 10px;border-radius:8px;border:none;background:var(--accent);color:#fff;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
 .dbtn{padding:4px 9px;border-radius:7px;border:1px solid rgba(255,64,96,.3);background:rgba(255,64,96,.08);color:var(--red);font-size:12px;font-weight:600;cursor:pointer}
-
-/* ── Record row ── */
 .rrow{display:flex;align-items:center;gap:9px;padding:10px 11px;border-radius:12px;margin-bottom:6px;background:var(--bg3);border:1px solid var(--border)}
 .rico{width:32px;height:32px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
 .rinfo{flex:1;min-width:0}
@@ -85,8 +67,6 @@ input[type=month]::-webkit-calendar-picker-indicator{filter:invert(.6) brightnes
 .ramt{font-size:14px;font-weight:800}
 .rconv{font-size:10px;color:var(--muted)}
 .rdel{border:none;background:transparent;cursor:pointer;color:var(--dim);padding:3px;display:flex;align-items:center;flex-shrink:0}
-
-/* ── Donut ── */
 .dwrap{display:flex;align-items:center;gap:12px}
 .dleg{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
 .lrow{display:flex;align-items:center;gap:6px;font-size:12px}
@@ -94,26 +74,34 @@ input[type=month]::-webkit-calendar-picker-indicator{filter:invert(.6) brightnes
 .lname{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .lpct{color:var(--muted);font-size:10px;flex-shrink:0}
 .lamt{font-weight:800;flex-shrink:0;font-size:12px}
-
-/* ── Modal ── */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;display:flex;align-items:flex-end;justify-content:center}
 .modal{background:var(--bg3);border:1px solid var(--border2);border-radius:20px 20px 0 0;padding:18px 13px calc(18px + var(--safe-bot));width:100%;max-width:480px}
 .mtitle{font-size:16px;font-weight:800;margin-bottom:13px}
-
-/* ── Toast ── */
 #toast{position:fixed;top:calc(14px + var(--safe-top));left:50%;transform:translateX(-50%);background:var(--bg4);border-radius:10px;padding:9px 17px;font-size:13px;font-weight:700;z-index:999;box-shadow:0 6px 30px rgba(0,0,0,.6);display:none;white-space:nowrap;border:1px solid transparent}
-
-/* ── Misc ── */
 .sgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .shdr{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center}
 .rowc{display:flex;align-items:center;gap:7px}
 .empty{text-align:center;color:var(--dim);padding:26px 0;font-size:13px}
-.tbadge{display:inline-flex;align-items:center;gap:5px;background:rgba(124,111,255,.1);border:1px solid rgba(124,111,255,.25);color:#A89FFF;border-radius:6px;padding:3px 9px;font-size:11px;font-weight:700;margin-bottom:8px}
 .rnote2{font-size:11px;color:var(--muted);margin-top:3px}
-.topic-filter-row{display:flex;gap:6px;margin-bottom:9px;overflow-x:auto;padding-bottom:2px}
+.tprow{display:flex;gap:6px;margin-bottom:9px;overflow-x:auto;padding-bottom:2px}
 .tpill{padding:4px 10px;border-radius:20px;border:1px solid var(--border2);background:var(--bg4);color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0}
 .tpill.on{background:rgba(124,111,255,.2);border-color:rgba(124,111,255,.5);color:#A89FFF}
+.dpc{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:11px 13px;margin-bottom:7px}
+.dpname{font-size:14px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:7px}
+.dprow{display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;color:var(--muted)}
+.dpnet{font-size:14px;font-weight:800;margin-top:7px;padding-top:7px;border-top:1px solid var(--border)}
 svg{display:block}
+
+/* ── Donut Carousel ── */
+.dc-wrap{position:relative;overflow:hidden;border-radius:15px;touch-action:pan-y}
+.dc-track{display:flex;transition:transform .32s cubic-bezier(.4,0,.2,1);will-change:transform}
+.dc-slide{flex:0 0 100%;box-sizing:border-box;padding:13px 15px;background:var(--bg3);border-right:1px solid var(--border)}
+.dc-slide:last-child{border-right:none}
+.dc-dots{display:flex;justify-content:center;gap:5px;padding:8px 0 4px}
+.dc-dot{width:6px;height:6px;border-radius:50%;background:var(--dim);cursor:pointer;transition:.2s}
+.dc-dot.on{background:var(--accent);width:16px;border-radius:3px}
+.dc-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;text-align:center}
+.dc-empty{text-align:center;color:var(--dim);padding:20px 0;font-size:13px}
 </style>
 </head>
 <body>
@@ -134,7 +122,7 @@ svg{display:block}
 </div>
 <div id="toast"></div>
 
-<!-- ═══ DASHBOARD ═══ -->
+<!-- DASHBOARD -->
 <div id="pg-dashboard" class="page on">
   <div style="margin-bottom:9px">
     <div class="tabs">
@@ -146,51 +134,73 @@ svg{display:block}
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         <span data-t="shared"></span>
       </button>
+      <button class="tab" id="dt-debt" onclick="setDashTab('debt')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span data-t="debt"></span>
+      </button>
     </div>
   </div>
 
-  <!-- Topic filter pills (shared only) -->
-  <div id="topic-filter-row" style="display:none">
-    <div class="topic-filter-row" id="topic-pills"></div>
-  </div>
-
-  <div class="rowc" style="margin-bottom:9px">
-    <div class="tabs" style="flex-shrink:0">
-      <button class="tab on" id="vm-monthly" onclick="setVM('monthly')" data-t="month"></button>
-      <button class="tab" id="vm-daily" onclick="setVM('daily')" data-t="day"></button>
+  <!-- Normal income/expense sections -->
+  <div id="normal-dash">
+    <div id="topic-filter-row" style="display:none">
+      <div class="tprow" id="topic-pills"></div>
     </div>
-    <input type="month" id="fMonth" class="inp" style="flex:1;padding:7px 9px;font-size:13px" onchange="render()">
-    <input type="date" id="fDay" class="inp" style="flex:1;padding:7px 9px;font-size:13px;display:none" onchange="render()">
-  </div>
-
-  <div style="text-align:right;font-size:11px;color:var(--muted);margin-bottom:6px">
-    <span data-t="showIn"></span> <strong id="dcur" style="color:var(--text)">HKD</strong>
-  </div>
-
-  <div class="sgrid" style="margin-bottom:8px">
-    <div class="card cg"><div class="clabel" style="color:var(--green)" data-t="income"></div><div class="cval" style="color:var(--green)" id="si">—</div></div>
-    <div class="card cr"><div class="clabel" style="color:var(--red)" data-t="expense"></div><div class="cval" style="color:var(--red)" id="se">—</div></div>
-  </div>
-  <div class="card" id="sn-card" style="margin-bottom:12px">
-    <div class="clabel" style="color:#8890BB" data-t="balance"></div>
-    <div style="font-size:24px;font-weight:800;letter-spacing:-1px" id="sn">—</div>
-  </div>
-
-  <div id="cat-sec" style="margin-bottom:12px">
-    <div class="shdr"><span data-t="expBreakdown"></span></div>
-    <div class="card"><div id="donut-area"></div></div>
-  </div>
-
-  <div>
+    <div class="rowc" style="margin-bottom:9px">
+      <div class="tabs" style="flex-shrink:0">
+        <button class="tab on" id="vm-monthly" onclick="setVM('monthly')" data-t="month"></button>
+        <button class="tab" id="vm-daily" onclick="setVM('daily')" data-t="day"></button>
+      </div>
+      <input type="month" id="fMonth" class="inp" style="flex:1;padding:7px 9px;font-size:13px" onchange="render()">
+      <input type="date" id="fDay" class="inp" style="flex:1;padding:7px 9px;font-size:13px;display:none" onchange="render()">
+    </div>
+    <div style="text-align:right;font-size:11px;color:var(--muted);margin-bottom:6px">
+      <span data-t="showIn"></span> <strong id="dcur" style="color:var(--text)">HKD</strong>
+    </div>
+    <div class="sgrid" style="margin-bottom:8px">
+      <div class="card cg"><div class="clabel" style="color:var(--green)" data-t="income"></div><div class="cval" style="color:var(--green)" id="si">-</div></div>
+      <div class="card cr"><div class="clabel" style="color:var(--red)" data-t="expense"></div><div class="cval" style="color:var(--red)" id="se">-</div></div>
+    </div>
+    <div class="card" id="sn-card" style="margin-bottom:12px">
+      <div class="clabel" style="color:#8890BB" data-t="balance"></div>
+      <div style="font-size:24px;font-weight:800;letter-spacing:-1px" id="sn">-</div>
+    </div>
+    <div id="cat-sec" style="margin-bottom:12px">
+      <div class="shdr"><span data-t="expBreakdown"></span></div>
+      <div class="dc-wrap" id="dc-wrap">
+        <div class="dc-track" id="dc-track"></div>
+      </div>
+      <div class="dc-dots" id="dc-dots"></div>
+    </div>
     <div class="shdr">
       <span><span data-t="recent"></span> <span id="rcnt" style="color:var(--dim)"></span></span>
       <button class="sbtn" onclick="goPage('list')" data-t="all"></button>
     </div>
     <div id="rlist"></div>
   </div>
+
+  <!-- Debt dashboard -->
+  <div id="dash-debt" style="display:none">
+    <div class="sgrid" style="margin-bottom:8px">
+      <div class="card cg"><div class="clabel" style="color:var(--green)" data-t="owedToMe"></div><div class="cval" style="color:var(--green)" id="d-owed-me">-</div></div>
+      <div class="card cr"><div class="clabel" style="color:var(--red)" data-t="iOwe"></div><div class="cval" style="color:var(--red)" id="d-i-owe">-</div></div>
+    </div>
+    <div class="card cy" style="margin-bottom:12px">
+      <div class="clabel" style="color:var(--yellow)" data-t="netDebt"></div>
+      <div style="font-size:24px;font-weight:800;letter-spacing:-1px" id="d-net">-</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px" id="d-net-label"></div>
+    </div>
+    <div class="shdr" style="margin-bottom:8px"><span data-t="perPerson"></span></div>
+    <div id="d-person-list"></div>
+    <div class="shdr" style="margin-top:12px;margin-bottom:7px">
+      <span data-t="debtHistory"></span>
+      <button class="sbtn" onclick="goPage('debtlist')" data-t="all"></button>
+    </div>
+    <div id="d-recent-list"></div>
+  </div>
 </div>
 
-<!-- ═══ ADD ═══ -->
+<!-- ADD -->
 <div id="pg-add" class="page">
   <div style="font-size:17px;font-weight:800;margin-bottom:14px" data-t="addRecord"></div>
   <div class="fl">
@@ -204,52 +214,98 @@ svg{display:block}
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         <span data-t="shared"></span>
       </button>
-    </div>
-  </div>
-  <div id="topic-fl" class="fl" style="display:none">
-    <label class="flabel" data-t="projTopic"></label>
-    <div style="display:flex;gap:7px">
-      <select class="inp" id="f-topic" style="flex:1"></select>
-      <button class="sbtn" onclick="openTopicModal()" style="flex-shrink:0">+ <span data-t="new"></span></button>
-    </div>
-  </div>
-  <div class="fl">
-    <label class="flabel" data-t="type"></label>
-    <div class="tabs">
-      <button class="tab on" id="ty-expense" onclick="setAddType('expense')">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        <span data-t="expense"></span>
-      </button>
-      <button class="tab" id="ty-income" onclick="setAddType('income')">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-        <span data-t="income"></span>
+      <button class="tab" id="at-debt" onclick="setAddScope('debt')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span data-t="debt"></span>
       </button>
     </div>
   </div>
-  <div class="fl">
-    <label class="flabel"><span data-t="amount"></span> (<span id="acur">HKD</span>)</label>
-    <input class="inp" type="number" inputmode="decimal" placeholder="0" id="f-amt">
-    <div class="rnote2" id="rprev"></div>
+
+  <!-- Debt fields -->
+  <div id="debt-add-fields" style="display:none">
+    <div class="fl">
+      <label class="flabel" data-t="debtType"></label>
+      <div class="tabs">
+        <button class="tab on" id="dty-lent" onclick="setDebtType('lent')"><span data-t="lentOut"></span></button>
+        <button class="tab" id="dty-borrowed" onclick="setDebtType('borrowed')"><span data-t="borrowed"></span></button>
+        <button class="tab" id="dty-repaid_me" onclick="setDebtType('repaid_me')"><span data-t="repaidMe"></span></button>
+        <button class="tab" id="dty-i_repaid" onclick="setDebtType('i_repaid')"><span data-t="iRepaid"></span></button>
+      </div>
+    </div>
+    <div class="fl">
+      <label class="flabel" data-t="personName"></label>
+      <input class="inp" type="text" id="d-person">
+    </div>
+    <div class="fl">
+      <label class="flabel"><span data-t="amount"></span> (<span id="d-acur">HKD</span>)</label>
+      <input class="inp" type="number" inputmode="decimal" placeholder="0" id="d-amt">
+      <div class="rnote2" id="d-rprev"></div>
+    </div>
+    <div class="fl">
+      <label class="flabel" data-t="date"></label>
+      <input class="inp" type="date" id="d-date">
+    </div>
+    <div class="fl" style="margin-bottom:18px">
+      <label class="flabel" data-t="note"></label>
+      <input class="inp" type="text" id="d-note">
+    </div>
+    <button class="pbtn" onclick="addDebtRecord()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      <span data-t="save"></span>
+    </button>
   </div>
-  <div class="fl">
-    <label class="flabel" data-t="category"></label>
-    <select class="inp" id="f-cat"></select>
+
+  <!-- Normal income/expense fields -->
+  <div id="normal-add-fields">
+    <div id="topic-fl" class="fl" style="display:none">
+      <label class="flabel" data-t="projTopic"></label>
+      <div style="display:flex;gap:7px">
+        <select class="inp" id="f-topic" style="flex:1"></select>
+        <button class="sbtn" onclick="openTopicModal()" style="flex-shrink:0">+ <span data-t="new"></span></button>
+      </div>
+    </div>
+    <div class="fl">
+      <label class="flabel" data-t="type"></label>
+      <div class="tabs">
+        <button class="tab on" id="ty-expense" onclick="setAddType('expense')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          <span data-t="expense"></span>
+        </button>
+        <button class="tab" id="ty-income" onclick="setAddType('income')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+          <span data-t="income"></span>
+        </button>
+      </div>
+    </div>
+    <div class="fl">
+      <label class="flabel"><span data-t="amount"></span> (<span id="acur">HKD</span>)</label>
+      <input class="inp" type="number" inputmode="decimal" placeholder="0" id="f-amt">
+      <div class="rnote2" id="rprev"></div>
+    </div>
+    <div class="fl">
+      <label class="flabel" data-t="category"></label>
+      <select class="inp" id="f-cat" onchange="onMainCatChange()"></select>
+    </div>
+    <div class="fl" id="subcat-fl" style="display:none">
+      <label class="flabel" data-t="subCategory"></label>
+      <select class="inp" id="f-subcat"></select>
+    </div>
+    <div class="fl">
+      <label class="flabel" data-t="date"></label>
+      <input class="inp" type="date" id="f-date">
+    </div>
+    <div class="fl" style="margin-bottom:18px">
+      <label class="flabel" data-t="note"></label>
+      <input class="inp" type="text" id="f-note">
+    </div>
+    <button class="pbtn" onclick="addRecord()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      <span data-t="save"></span>
+    </button>
   </div>
-  <div class="fl">
-    <label class="flabel" data-t="date"></label>
-    <input class="inp" type="date" id="f-date">
-  </div>
-  <div class="fl" style="margin-bottom:18px">
-    <label class="flabel" data-t="note"></label>
-    <input class="inp" type="text" id="f-note">
-  </div>
-  <button class="pbtn" onclick="addRecord()">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-    <span data-t="save"></span>
-  </button>
 </div>
 
-<!-- ═══ LIST ═══ -->
+<!-- LIST -->
 <div id="pg-list" class="page">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
     <div style="font-size:17px;font-weight:800" data-t="allRecords"></div>
@@ -271,7 +327,13 @@ svg{display:block}
   <div id="alist"></div>
 </div>
 
-<!-- ═══ NAV ═══ -->
+<!-- DEBT LIST -->
+<div id="pg-debtlist" class="page">
+  <div style="font-size:17px;font-weight:800;margin-bottom:12px" data-t="debtHistory"></div>
+  <div id="dalist"></div>
+</div>
+
+<!-- NAV -->
 <nav class="nav">
   <button class="nb on" id="nv-dashboard" onclick="goPage('dashboard')">
     <div class="ni"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
@@ -287,7 +349,7 @@ svg{display:block}
   </button>
 </nav>
 
-<!-- ═══ TOPIC MODAL ═══ -->
+<!-- TOPIC MODAL -->
 <div class="overlay" id="tmodal" style="display:none" onclick="if(event.target===this)closeTopicModal()">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="mtitle" data-t="manageTopics"></div>
@@ -303,92 +365,84 @@ svg{display:block}
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════
-// CATEGORY KEYS — language-independent internal IDs
-// Each category has a stable key. Display labels come from CAT_LABELS[lang][key].
-// This fixes the bug where switching language caused chart to split categories.
-// ═══════════════════════════════════════════════════════
+// ---- CATEGORY KEYS (language-independent) ----
 const CAT_KEYS = {
   personal: {
-    expense: ['food','transport','shopping','entertainment','medical','accommodation','phone','others'],
+    expense: ['food','transport','fuel','shopping','entertainment','medical','accommodation','utilities','phone','internet','others'],
     income:  ['salary','transfer','others_inc']
   },
   shared: {
-    expense: ['dining_s','rent','utilities','office','transport_s','accommodation_s','repairs','misc','others_s'],
+    expense: ['dining_s','transport_s','accommodation_s','gift_s','others_s'],
     income:  ['remittance_s','donation_s','others_si']
   }
 };
-
 const CAT_LABELS = {
   en: {
     personal: {
-      expense: ['Food & Drink','Transport/Fuel','Shopping','Entertainment','Medical','Accommodation','Phone/Internet','Others'],
+      expense: ['Food & Drink','Transport','Fuel','Shopping','Entertainment','Medical','Accommodation','Utilities','Phone','Internet','Others'],
       income:  ['Salary','Transfer In','Others']
     },
     shared: {
-      expense: ['Dining','Rent','Utilities','Office Supplies','Transport/Fuel','Accommodation','Repairs','Miscellaneous','Others'],
+      expense: ['Dining','Transport','Accommodation','Gift','Others'],
       income:  ['Remittance','Offering/Donation','Others']
     }
   },
   zh: {
     personal: {
-      expense: ['飲食','交通/油費','購物','娛樂','醫療','住宿','電話/網絡','其他'],
-      income:  ['出糧','匯款','其他']
+      expense: ['\u98F2\u98DF','\u4EA4\u901A','\u6CB9\u8CBB','\u8CFC\u7269','\u5A1B\u6A02','\u91AB\u7642','\u4F4F\u5BBF','\u6C34\u96FB\u8CBB','\u96FB\u8A71','\u7DB2\u7D61','\u5176\u4ED6'],
+      income:  ['\u51FA\u7CE7','\u532F\u6B3E','\u5176\u4ED6']
     },
     shared: {
-      expense: ['餐飲','租金','水電費','辦公室雜費','交通/油費','住宿','維修','雜項','其他'],
-      income:  ['匯款','奉獻','其他']
+      expense: ['\u9910\u98F2','\u4EA4\u901A','\u4F4F\u5BBF','\u79AE\u7269','\u5176\u4ED6'],
+      income:  ['\u532F\u6B3E','\u5949\u737B','\u5176\u4ED6']
     }
   }
 };
 
-// Get the category key from a stored record
-// Stored records have r.catKey (new) or r.category (legacy display string)
-function getCatKey(r) {
-  if (r.catKey) return r.catKey;
-  // Legacy: try to find by matching display label across all langs
-  const scope = r.scope || 'personal';
-  const type  = r.type === 'income' ? 'income' : 'expense';
-  for (const lng of ['en','zh']) {
-    const labels = CAT_LABELS[lng][scope][type];
-    const keys   = CAT_KEYS[scope][type];
-    const idx = labels.indexOf(r.category);
-    if (idx !== -1) return keys[idx];
-  }
-  return r.category; // fallback
-}
+// Sub-categories for shared expenses (parent key -> [{key, en, zh}])
+const SHARED_SUB = {
+  dining_s:      [{k:'dining_eat',   en:'Eating Out',    zh:'\u51FA\u8857\u98DF'  },
+                  {k:'dining_kitch', en:'Kitchen',        zh:'\u5EDA\u623F'          },
+                  {k:'dining_fruit', en:'Fruit',          zh:'\u6C34\u679C'          },
+                  {k:'dining_drink', en:'Drinks',         zh:'\u98F2\u54C1'          }],
+  transport_s:   [{k:'trans_car',    en:'Car Rental',    zh:'\u79DF\u8ECA'             },
+                  {k:'trans_fuel',   en:'Fuel',           zh:'\u6CB9\u8CBB'          },
+                  {k:'trans_toll',   en:'Toll',           zh:'\u516C\u8DEF\u8CBB'  }],
+  accommodation_s:[{k:'accom_hotel', en:'Hotel',          zh:'\u9152\u5E97'          },
+                   {k:'accom_other', en:'Others',         zh:'\u5176\u4ED6'          }],
+  gift_s:        [{k:'gift_centre',  en:'Centre Activity',zh:'\u4E2D\u5FC3\u6D3B\u52D5'},
+                  {k:'gift_school',  en:'School',         zh:'\u5B78\u6821'          },
+                  {k:'gift_prison',  en:'Prison',         zh:'\u76E3\u7344'          },
+                  {k:'gift_visit',   en:'Visitation',     zh:'\u63A2\u8A2A'          },
+                  {k:'gift_other',   en:'Others',         zh:'\u5176\u4ED6'          }],
+  others_s:      [{k:'other_misc',   en:'Miscellaneous',  zh:'\u96DC\u9805'          },
+                  {k:'other_repair', en:'Repairs',        zh:'\u7DAD\u4FEE'          },
+                  {k:'other_allow',  en:'Allowance',      zh:'\u6D25\u8CBC'          },
+                  {k:'other_equip',  en:'Equipment',      zh:'\u5668\u6750'          },
+                  {k:'other_other',  en:'Others',         zh:'\u5176\u4ED6'          }]
+};
 
-function getCatLabel(key, scope, type) {
-  const keys   = CAT_KEYS[scope][type];
-  const labels = CAT_LABELS[lang][scope][type];
-  const idx = keys.indexOf(key);
-  return idx !== -1 ? labels[idx] : key;
-}
-
-// ═══════════════════════════════════════════════════════
-// CATEGORY COLOURS — keyed by catKey, stable across languages
-// ═══════════════════════════════════════════════════════
-const CC = ['#FF6B8A','#FF9D5C','#F5C842','#4FE88A','#4CB8F5',
-            '#A87DFF','#FF7EC8','#45D4AA','#F07060','#60D0EA',
-            '#FFB060','#B0E060','#7090D8','#40C8B8'];
-const _colorCache = {};
-let _colorIdx = 0;
-function catColor(key) {
-  if (!_colorCache[key]) { _colorCache[key] = CC[_colorIdx++ % CC.length]; }
-  return _colorCache[key];
-}
-// Pre-assign colours in a stable order so they don't change between renders
-(function seedColors(){
-  const allKeys = [
-    ...CAT_KEYS.personal.expense, ...CAT_KEYS.personal.income,
-    ...CAT_KEYS.shared.expense,   ...CAT_KEYS.shared.income
-  ];
-  allKeys.forEach(k => catColor(k));
+const CC = ['#FF6B8A','#FF9D5C','#F5C842','#4FE88A','#4CB8F5','#A87DFF','#FF7EC8','#45D4AA','#F07060','#60D0EA','#FFB060','#B0E060','#7090D8','#40C8B8'];
+const _cc = {}; let _ci = 0;
+function catColor(k){ if(!_cc[k]){_cc[k]=CC[_ci++%CC.length];} return _cc[k]; }
+(function(){
+  [...CAT_KEYS.personal.expense,...CAT_KEYS.personal.income,...CAT_KEYS.shared.expense,...CAT_KEYS.shared.income].forEach(k=>catColor(k));
+  // Also seed sub-category keys for stable colours
+  Object.values(SHARED_SUB).forEach(subs=>subs.forEach(s=>catColor(s.k)));
 })();
 
-// ═══════════════════════════════════════════════════════
-// i18n
-// ═══════════════════════════════════════════════════════
+function getCatKey(r){
+  if(r.catKey) return r.catKey;
+  const sc=r.scope||'personal', tp=r.type==='income'?'income':'expense';
+  for(const lg of['en','zh']){ const idx=(CAT_LABELS[lg][sc]||{[tp]:[]})[tp].indexOf(r.category); if(idx!==-1) return CAT_KEYS[sc][tp][idx]; }
+  return r.category;
+}
+function getCatLabel(key,scope,type){
+  const keys=CAT_KEYS[scope][type], labels=(CAT_LABELS[lang]||CAT_LABELS.en)[scope][type];
+  const i=keys.indexOf(key); return i!==-1?labels[i]:key;
+}
+
+// ---- i18n ----
 const T = {
   en:{
     personal:'Personal',shared:'Shared',month:'Month',day:'Day',
@@ -402,411 +456,778 @@ const T = {
     noRec:'No records yet',noRecAll:'No records',allTopics:'All',
     deleted:'Deleted',saved:'Saved!',exported:'Exported!',
     eAmt:'Enter a valid amount',eCat:'Select a category',eDate:'Select a date',
-    selTopic:'— Select topic —',
+    selTopic:'-- Select topic --',
+    debt:'Debt',owedToMe:'Owed to Me',iOwe:'I Owe',netDebt:'Net Position',
+    perPerson:'Per Person',debtHistory:'Debt History',
+    debtType:'Transaction Type',lentOut:'Lent Out',borrowed:'Borrowed',
+    repaidMe:'Repaid Me',iRepaid:'I Repaid',personName:'Person',
+    ePerson:'Enter person name',
+    netPositive:'People owe you overall',netNegative:'You owe people overall',netZero:'All settled',
+    editRecord:'Edit Record',saveEdit:'Save Changes',subCategory:'Sub-category'
   },
   zh:{
-    personal:'個人',shared:'公數',month:'月',day:'日',
-    showIn:'顯示貨幣',income:'收入',expense:'支出',balance:'結餘',
-    expBreakdown:'支出分類',recent:'最近',all:'全部',
-    addRecord:'新增記錄',account:'帳目',projTopic:'項目主題',
-    new:'新增',type:'類型',amount:'金額',category:'類別',
-    date:'日期',note:'備注（可選）',save:'確認儲存',
-    allRecords:'所有記錄',export:'匯出',overview:'總覽',
-    add:'新增',records:'記錄',manageTopics:'管理主題',close:'關閉',
-    noRec:'暫無記錄',noRecAll:'暫無記錄',allTopics:'全部',
-    deleted:'已刪除',saved:'已儲存！',exported:'已匯出！',
-    eAmt:'請輸入有效金額',eCat:'請選擇類別',eDate:'請選擇日期',
-    selTopic:'— 選擇主題 —',
+    personal:'\u500B\u4EBA',shared:'\u516C\u6578',month:'\u6708',day:'\u65E5',
+    showIn:'\u986F\u793A\u8CA8\u5E63',income:'\u6536\u5165',expense:'\u652F\u51FA',balance:'\u7D50\u9918',
+    expBreakdown:'\u652F\u51FA\u5206\u985E',recent:'\u6700\u8FD1',all:'\u5168\u90E8',
+    addRecord:'\u65B0\u589E\u8A18\u9304',account:'\u5E33\u76EE',projTopic:'\u9805\u76EE\u4E3B\u984C',
+    new:'\u65B0\u589E',type:'\u985E\u578B',amount:'\u91D1\u984D',category:'\u985E\u5225',
+    date:'\u65E5\u671F',note:'\u5099\u6CE8\uFF08\u53EF\u9078\uFF09',save:'\u78BA\u8A8D\u5132\u5B58',
+    allRecords:'\u6240\u6709\u8A18\u9304',export:'\u532F\u51FA',overview:'\u7E3D\u89BD',
+    add:'\u65B0\u589E',records:'\u8A18\u9304',manageTopics:'\u7BA1\u7406\u4E3B\u984C',close:'\u95DC\u9589',
+    noRec:'\u66AB\u7121\u8A18\u9304',noRecAll:'\u66AB\u7121\u8A18\u9304',allTopics:'\u5168\u90E8',
+    deleted:'\u5DF2\u522A\u9664',saved:'\u5DF2\u5132\u5B58\uFF01',exported:'\u5DF2\u532F\u51FA\uFF01',
+    eAmt:'\u8ACB\u8F38\u5165\u6709\u6548\u91D1\u984D',eCat:'\u8ACB\u9078\u64C7\u985E\u5225',eDate:'\u8ACB\u9078\u64C7\u65E5\u671F',
+    selTopic:'-- \u9078\u64C7\u4E3B\u984C --',
+    debt:'\u6B20\u50B5',owedToMe:'\u4EBA\u6B20\u6211',iOwe:'\u6211\u6B20\u4EBA',netDebt:'\u6DE8\u7D50\u9918',
+    perPerson:'\u6BCF\u4EBA\u72C0\u6CC1',debtHistory:'\u6B20\u50B5\u8A18\u9304',
+    debtType:'\u4EA4\u6613\u985E\u578B',lentOut:'\u501F\u51FA',borrowed:'\u501F\u5165',
+    repaidMe:'\u5C0D\u65B9\u9084\u6211',iRepaid:'\u6211\u9084\u5C0D\u65B9',personName:'\u5C0D\u65B9\u59D3\u540D',
+    ePerson:'\u8ACB\u8F38\u5165\u5C0D\u65B9\u59D3\u540D',
+    netPositive:'\u6574\u9AD4\u4EBA\u6B20\u4F60',netNegative:'\u6574\u9AD4\u4F60\u6B20\u4EBA',netZero:'\u5168\u90E8\u7D50\u6E05',
+    editRecord:'\u7DE8\u8F2F\u8A18\u9304',saveEdit:'\u5132\u5B58\u4FEE\u6539',subCategory:'\u7EC6\u985E'
   }
 };
 let lang = localStorage.getItem('ml_lang') || 'en';
 const tr = k => T[lang][k] || k;
 
-function applyLang() {
+function applyLang(){
   document.querySelectorAll('[data-t]').forEach(el => { el.textContent = tr(el.dataset.t); });
-  document.getElementById('langBtn').textContent = lang === 'en' ? '中文' : 'EN';
-  document.getElementById('f-note').placeholder = tr('note');
+  document.getElementById('langBtn').textContent = lang==='en' ? '\u4E2D\u6587' : 'EN';
+  document.getElementById('f-note').placeholder  = tr('note');
+  document.getElementById('d-note').placeholder  = tr('note');
+  document.getElementById('d-person').placeholder= tr('personName');
   document.getElementById('new-topic').placeholder = tr('projTopic');
-  refreshTopicSel();
-  updateCats();
-  render();
-  renderList();
+  refreshTopicSel(); updateCats(); render(); renderList();
+  if(dashScope==='debt') renderDebtDash();
 }
-function toggleLang() {
-  lang = lang === 'en' ? 'zh' : 'en';
-  localStorage.setItem('ml_lang', lang);
-  applyLang();
-}
+function toggleLang(){ lang = lang==='en'?'zh':'en'; localStorage.setItem('ml_lang',lang); applyLang(); }
 
-// ═══════════════════════════════════════════════════════
-// CURRENCY
-// ═══════════════════════════════════════════════════════
+// ---- Currency ----
 const TO_HKD = { HKD:1, USD:7.78, THB:1/4.1 };
-const SYM = { HKD:'HK$', USD:'US$', THB:'฿' };
-const toHKD   = (a,c) => a * (TO_HKD[c] || 1);
-const fromHKD = (a,c) => a / (TO_HKD[c] || 1);
-const convert = (a,from,to) => from===to ? a : fromHKD(toHKD(a,from),to);
-function fmt(a, c) {
-  c = c || currency;
-  const v = Math.round(a*10)/10;
-  return (SYM[c]||c) + new Intl.NumberFormat('en',{minimumFractionDigits:0,maximumFractionDigits:1}).format(v);
-}
+const SYM = { HKD:'HK$', USD:'US$', THB:'\u0E3F' };
+const toHKD   = (a,c) => a*(TO_HKD[c]||1);
+const fromHKD = (a,c) => a/(TO_HKD[c]||1);
+const convert = (a,f,t) => f===t?a:fromHKD(toHKD(a,f),t);
+function fmt(a,c){ c=c||currency; const v=Math.round(a*10)/10; return (SYM[c]||c)+new Intl.NumberFormat('en',{minimumFractionDigits:0,maximumFractionDigits:1}).format(v); }
 
-// ═══════════════════════════════════════════════════════
-// STATE + STORAGE
-// ═══════════════════════════════════════════════════════
+// ---- State & Storage ----
 const SK = 'moneylog_v5';
 const HY = 183*86400*1000;
-let records=[], topics=[], currency='HKD';
+let records=[], topics=[], debts=[], currency='HKD';
 let dashScope='personal', listScope='personal', addScope='personal';
-let addType_='expense', viewMode='monthly';
-let addTopicSel='', dashTopicFilter=''; // '' = show all
+let addType_='expense', viewMode='monthly', addTopicSel='', dashTopicFilter='';
+let debtType_='lent';
 
 const today     = () => new Date().toISOString().slice(0,10);
 const thisMonth = () => today().slice(0,7);
 
-function loadData() {
-  try {
-    const d = localStorage.getItem(SK);
-    if (d) { const p=JSON.parse(d); records=p.r||[]; topics=p.t||[]; currency=p.c||'HKD'; lang=p.l||lang; }
-  } catch {}
-  records = records.filter(r => new Date(r.date).getTime() > Date.now()-HY);
+function loadData(){
+  try{ const d=localStorage.getItem(SK); if(d){ const p=JSON.parse(d); records=p.r||[]; topics=p.t||[]; debts=p.d||[]; currency=p.c||'HKD'; lang=p.l||lang; } }catch{}
+  records=records.filter(r=>new Date(r.date).getTime()>Date.now()-HY);
 }
-function save() {
-  localStorage.setItem(SK, JSON.stringify({r:records,t:topics,c:currency,l:lang}));
-}
+function save(){ localStorage.setItem(SK,JSON.stringify({r:records,t:topics,d:debts,c:currency,l:lang})); }
 
-// ═══════════════════════════════════════════════════════
-// TOPICS
-// ═══════════════════════════════════════════════════════
-function refreshTopicSel() {
-  const sel = document.getElementById('f-topic');
-  sel.innerHTML = `<option value="">${tr('selTopic')}</option>`
-    + topics.map(tp=>`<option value="${tp.id}"${tp.id===addTopicSel?' selected':''}>${tp.name}</option>`).join('');
+// ---- Topics ----
+function refreshTopicSel(){
+  const sel=document.getElementById('f-topic');
+  sel.innerHTML='<option value="">'+tr('selTopic')+'</option>'+topics.map(tp=>'<option value="'+tp.id+'"'+(tp.id===addTopicSel?' selected':'')+'>'+tp.name+'</option>').join('');
 }
-function openTopicModal() { renderTopicList(); document.getElementById('tmodal').style.display='flex'; }
-function closeTopicModal() { document.getElementById('tmodal').style.display='none'; refreshTopicSel(); }
-function doAddTopic() {
-  const inp = document.getElementById('new-topic');
-  const name = inp.value.trim(); if (!name) return;
-  topics.push({id:Date.now().toString(), name, date:today()});
-  save(); inp.value=''; renderTopicList(); refreshTopicSel(); renderTopicPills();
+function openTopicModal(){ renderTopicList(); document.getElementById('tmodal').style.display='flex'; }
+function closeTopicModal(){ document.getElementById('tmodal').style.display='none'; refreshTopicSel(); }
+function doAddTopic(){
+  const inp=document.getElementById('new-topic'), name=inp.value.trim(); if(!name) return;
+  topics.push({id:Date.now().toString(),name,date:today()}); save(); inp.value=''; renderTopicList(); refreshTopicSel(); renderTopicPills();
 }
-function delTopic(id) {
-  topics = topics.filter(tp=>tp.id!==id);
-  if (addTopicSel===id) addTopicSel='';
-  if (dashTopicFilter===id) dashTopicFilter='';
+function delTopic(id){
+  topics=topics.filter(tp=>tp.id!==id); if(addTopicSel===id) addTopicSel=''; if(dashTopicFilter===id) dashTopicFilter='';
   save(); renderTopicList(); refreshTopicSel(); renderTopicPills();
 }
-function renderTopicList() {
-  const el = document.getElementById('tlist');
-  if (!topics.length) { el.innerHTML=`<div class="empty">${tr('noRecAll')}</div>`; return; }
-  el.innerHTML = topics.map(tp=>`
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)">
-      <div style="flex:1;font-size:14px;font-weight:700">${tp.name}</div>
-      <div style="font-size:11px;color:var(--muted)">${tp.date}</div>
-      <button class="dbtn" onclick="delTopic('${tp.id}')">✕</button>
-    </div>`).join('');
+function renderTopicList(){
+  const el=document.getElementById('tlist');
+  if(!topics.length){ el.innerHTML='<div class="empty">'+tr('noRecAll')+'</div>'; return; }
+  el.innerHTML=topics.map(tp=>'<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)"><div style="flex:1;font-size:14px;font-weight:700">'+tp.name+'</div><div style="font-size:11px;color:var(--muted)">'+tp.date+'</div><button class="dbtn" onclick="delTopic(\''+tp.id+'\')">x</button></div>').join('');
+}
+function renderTopicPills(){
+  const row=document.getElementById('topic-filter-row'), pills=document.getElementById('topic-pills');
+  if(dashScope!=='shared'||!topics.length){ row.style.display='none'; return; }
+  row.style.display='';
+  pills.innerHTML='<button class="tpill'+(dashTopicFilter===''?' on':'')+'" onclick="setTopicFilter(\'\')">'+tr('allTopics')+'</button>'+topics.map(tp=>'<button class="tpill'+(dashTopicFilter===tp.id?' on':'')+'" onclick="setTopicFilter(\''+tp.id+'\')">'+tp.name+'</button>').join('');
+}
+function setTopicFilter(id){ dashTopicFilter=id; renderTopicPills(); render(); }
+
+// ---- Navigation ----
+const PAGES=['dashboard','add','list','debtlist'];
+function goPage(p){
+  PAGES.forEach(id=>{ document.getElementById('pg-'+id).classList.toggle('on',id===p); });
+  ['dashboard','add','list'].forEach(id=>{ document.getElementById('nv-'+id).classList.toggle('on',id===p); });
+  if(p==='list') renderList();
+  if(p==='dashboard') render();
+  if(p==='debtlist') renderDebtList();
 }
 
-// Topic filter pills in dashboard (shared view)
-function renderTopicPills() {
-  const row = document.getElementById('topic-filter-row');
-  const pills = document.getElementById('topic-pills');
-  if (dashScope !== 'shared' || !topics.length) { row.style.display='none'; return; }
-  row.style.display = '';
-  pills.innerHTML = `<button class="tpill${dashTopicFilter===''?' on':''}" onclick="setTopicFilter('')">${tr('allTopics')}</button>`
-    + topics.map(tp=>`<button class="tpill${dashTopicFilter===tp.id?' on':''}" onclick="setTopicFilter('${tp.id}')">${tp.name}</button>`).join('');
+// ---- Dashboard ----
+function setDashTab(s){
+  dashScope=s; if(s!=='shared') dashTopicFilter='';
+  ['personal','shared','debt'].forEach(x=>document.getElementById('dt-'+x).classList.toggle('on',x===s));
+  const isDebt=s==='debt';
+  document.getElementById('normal-dash').style.display=isDebt?'none':'';
+  document.getElementById('dash-debt').style.display=isDebt?'':'none';
+  if(isDebt){ renderDebtDash(); return; }
+  renderTopicPills(); render();
 }
-function setTopicFilter(id) {
-  dashTopicFilter = id;
-  renderTopicPills();
+function setVM(m){
+  viewMode=m; ['monthly','daily'].forEach(x=>document.getElementById('vm-'+x).classList.toggle('on',x===m));
+  document.getElementById('fMonth').style.display=m==='monthly'?'':'none';
+  document.getElementById('fDay').style.display=m==='daily'?'':'none';
   render();
 }
-
-// ═══════════════════════════════════════════════════════
-// NAVIGATION
-// ═══════════════════════════════════════════════════════
-const PAGES = ['dashboard','add','list'];
-function goPage(p) {
-  PAGES.forEach(id => {
-    document.getElementById('pg-'+id).classList.toggle('on', id===p);
-    document.getElementById('nv-'+id).classList.toggle('on', id===p);
-  });
-  if (p==='list') renderList();
-  if (p==='dashboard') render();
-}
-
-// ═══════════════════════════════════════════════════════
-// DASHBOARD
-// ═══════════════════════════════════════════════════════
-function setDashTab(s) {
-  dashScope = s;
-  if (s !== 'shared') dashTopicFilter = '';
-  ['personal','shared'].forEach(x=>document.getElementById('dt-'+x).classList.toggle('on',x===s));
-  renderTopicPills();
-  render();
-}
-function setVM(m) {
-  viewMode = m;
-  ['monthly','daily'].forEach(x=>document.getElementById('vm-'+x).classList.toggle('on',x===m));
-  document.getElementById('fMonth').style.display = m==='monthly'?'':'none';
-  document.getElementById('fDay').style.display   = m==='daily'?'':'none';
-  render();
-}
-function getFiltered() {
-  const fm = document.getElementById('fMonth').value;
-  const fd = document.getElementById('fDay').value;
-  return records.filter(r => {
-    if (r.scope !== dashScope) return false;
-    const dateMatch = viewMode==='monthly' ? r.date.startsWith(fm) : r.date===fd;
-    if (!dateMatch) return false;
-    // Topic filter: only applied for shared scope
-    if (dashScope==='shared' && dashTopicFilter) return r.topicId === dashTopicFilter;
+function getFiltered(){
+  const fm=document.getElementById('fMonth').value, fd=document.getElementById('fDay').value;
+  return records.filter(r=>{
+    if(r.scope!==dashScope) return false;
+    const dm=viewMode==='monthly'?r.date.startsWith(fm):r.date===fd;
+    if(!dm) return false;
+    if(dashScope==='shared'&&dashTopicFilter) return r.topicId===dashTopicFilter;
     return true;
   });
 }
-
-function render() {
-  document.getElementById('dcur').textContent = currency;
+function render(){
+  document.getElementById('dcur').textContent=currency;
   renderTopicPills();
-
-  const recs = getFiltered();
-  const inc  = recs.filter(r=>r.type==='income').reduce((s,r)=>s+convert(r.amount,r.cur||'HKD',currency),0);
-  const exp  = recs.filter(r=>r.type==='expense').reduce((s,r)=>s+convert(r.amount,r.cur||'HKD',currency),0);
-  const net  = inc-exp;
-  document.getElementById('si').textContent = fmt(inc);
-  document.getElementById('se').textContent = fmt(exp);
-  document.getElementById('sn').textContent = fmt(net);
-  document.getElementById('sn').style.color = net>=0?'#A89FFF':'var(--orange)';
-  document.getElementById('sn-card').className = 'card '+(net>=0?'cp':'co');
-
-  // Expense by category KEY (language-independent)
-  const catMap = {};
-  recs.filter(r=>r.type==='expense').forEach(r => {
-    const k = getCatKey(r);
-    catMap[k] = (catMap[k]||0) + convert(r.amount,r.cur||'HKD',currency);
+  const recs=getFiltered();
+  const inc=recs.filter(r=>r.type==='income').reduce((s,r)=>s+convert(r.amount,r.cur||'HKD',currency),0);
+  const exp=recs.filter(r=>r.type==='expense').reduce((s,r)=>s+convert(r.amount,r.cur||'HKD',currency),0);
+  const net=inc-exp;
+  document.getElementById('si').textContent=fmt(inc);
+  document.getElementById('se').textContent=fmt(exp);
+  document.getElementById('sn').textContent=fmt(net);
+  document.getElementById('sn').style.color=net>=0?'#A89FFF':'var(--orange)';
+  document.getElementById('sn-card').className='card '+(net>=0?'cp':'co');
+  // Build main-category map (always by mainKey)
+  const mainCatMap={};
+  recs.filter(r=>r.type==='expense').forEach(r=>{
+    const k=getCatKey(r);
+    mainCatMap[k]=(mainCatMap[k]||0)+convert(r.amount,r.cur||'HKD',currency);
   });
-  const cats = Object.entries(catMap).sort((a,b)=>b[1]-a[1]);
-  const sec = document.getElementById('cat-sec');
-  if (!cats.length) { sec.style.display='none'; return; }
-  sec.style.display = '';
-  document.getElementById('donut-area').innerHTML = buildDonut(cats, exp, recs[0]?.scope||dashScope, 'expense');
-
-  const sorted = [...recs].sort((a,b)=>b.date.localeCompare(a.date));
-  document.getElementById('rcnt').textContent = `(${sorted.length})`;
-  document.getElementById('rlist').innerHTML = sorted.length===0
-    ? `<div class="empty">${tr('noRec')}</div>`
-    : sorted.slice(0,8).map(r=>rowHTML(r)).join('');
+  const mainCats=Object.entries(mainCatMap).sort((a,b)=>b[1]-a[1]);
+  const sec=document.getElementById('cat-sec'); sec.style.display=mainCats.length?'':'none';
+  if(mainCats.length) buildDonutCarousel(mainCats, recs.filter(r=>r.type==='expense'), dashScope);
+  const sorted=[...recs].sort((a,b)=>b.date.localeCompare(a.date));
+  document.getElementById('rcnt').textContent='('+sorted.length+')';
+  document.getElementById('rlist').innerHTML=sorted.length===0?'<div class="empty">'+tr('noRec')+'</div>':sorted.slice(0,8).map(r=>rowHTML(r)).join('');
 }
 
-// ═══════════════════════════════════════════════════════
-// DONUT CHART
-// ═══════════════════════════════════════════════════════
-function buildDonut(cats, total, scope, type) {
-  if (!total || !cats.length) return '';
-  const R=52, r=33, cx=60, cy=60, sz=120;
-  let paths='', angle=-Math.PI/2;
-  const slices = cats.slice(0,9);
-  const rest = cats.slice(9).reduce((s,[,v])=>s+v,0);
-  if (rest>0) slices.push(['others_overflow',rest]);
 
-  slices.forEach(([key,val]) => {
-    const pct = val/total;
-    const sw  = pct * 2 * Math.PI;
-    const x1=cx+R*Math.cos(angle), y1=cy+R*Math.sin(angle);
-    const x2=cx+R*Math.cos(angle+sw), y2=cy+R*Math.sin(angle+sw);
-    const x3=cx+r*Math.cos(angle+sw), y3=cy+r*Math.sin(angle+sw);
-    const x4=cx+r*Math.cos(angle), y4=cy+r*Math.sin(angle);
-    const lg = sw>Math.PI?1:0;
-    const col = catColor(key);
-    if (pct>0.001)
-      paths += `<path d="M${x1},${y1}A${R},${R} 0 ${lg},1 ${x2},${y2}L${x3},${y3}A${r},${r} 0 ${lg},0 ${x4},${y4}Z" fill="${col}" stroke="var(--bg)" stroke-width="1.5"/>`;
-    angle += sw;
+// ---- DONUT CAROUSEL ----
+let _dcIdx = 0;  // current slide index
+
+function buildDonutCarousel(mainCats, expRecs, scope) {
+  _dcIdx = 0;
+  const track = document.getElementById('dc-track');
+  const dots  = document.getElementById('dc-dots');
+
+  // Slide 0: Overview — all main categories
+  const slides = [];
+  const total  = mainCats.reduce((s,[,v])=>s+v,0);
+  slides.push({ title: lang==='zh'?'\u7E3D\u89BD':'Overview', cats: mainCats, total });
+
+  // One slide per main cat that has sub-categories and has records
+  mainCats.forEach(([mainKey]) => {
+    const subs = SHARED_SUB[mainKey];
+    if (!subs) return;
+    // Build sub-cat totals for this main key
+    const subMap = {};
+    expRecs.filter(r=>getCatKey(r)===mainKey && r.subKey).forEach(r=>{
+      subMap[r.subKey]=(subMap[r.subKey]||0)+convert(r.amount,r.cur||'HKD',currency);
+    });
+    const subCats = Object.entries(subMap).sort((a,b)=>b[1]-a[1]);
+    if (!subCats.length) return;
+    const subTotal = subCats.reduce((s,[,v])=>s+v,0);
+    const mainLabel = getCatLabel(mainKey, scope, 'expense');
+    slides.push({ title: mainLabel, cats: subCats, total: subTotal, isSub: true, mainKey });
   });
 
-  const legendHTML = slices.map(([key,val]) => {
-    const pct = Math.round(val/total*100);
-    const col = catColor(key);
-    const label = key==='others_overflow'
-      ? (lang==='zh'?'其他':'Others')
-      : getCatLabel(key, scope, type);
-    return `<div class="lrow">
-      <div class="ldot" style="background:${col}"></div>
-      <div class="lname">${label}</div>
-      <div class="lpct">${pct}%</div>
-      <div class="lamt" style="color:${col}">${fmt(val)}</div>
-    </div>`;
+  // Render slides
+  track.innerHTML = slides.map((s, i) => {
+    const donutHTML = buildDonut(s.cats, s.total, scope, 'expense', s.isSub ? s.mainKey : null);
+    return '<div class="dc-slide">'
+      + '<div class="dc-title">' + s.title + '</div>'
+      + donutHTML
+      + '</div>';
   }).join('');
 
-  const dispTotal = fmt(total).replace('HK$','$').replace('US$','$');
-  return `<div class="dwrap">
-    <svg width="${sz}" height="${sz}" viewBox="0 0 ${sz} ${sz}" style="flex-shrink:0">
-      ${paths}
-      <circle cx="${cx}" cy="${cy}" r="${r-2}" fill="var(--bg3)"/>
-      <text x="${cx}" y="${cy-4}" text-anchor="middle" font-size="9" fill="var(--muted)" font-family="DM Sans">${tr('expense')}</text>
-      <text x="${cx}" y="${cy+9}" text-anchor="middle" font-size="11" fill="var(--text)" font-family="DM Sans" font-weight="800">${dispTotal}</text>
-    </svg>
-    <div class="dleg">${legendHTML}</div>
-  </div>`;
+  // Render dots
+  dots.innerHTML = slides.map((_, i) =>
+    '<div class="dc-dot'+(i===0?' on':'')+'" onclick="dcGoTo('+i+')"></div>'
+  ).join('');
+
+  dcSetPos(0, false);
+  initCarouselSwipe();
 }
 
-// ═══════════════════════════════════════════════════════
-// LIST
-// ═══════════════════════════════════════════════════════
-function setListTab(s) {
-  listScope = s;
-  ['personal','shared'].forEach(x=>document.getElementById('lt-'+x).classList.toggle('on',x===s));
-  renderList();
-}
-function renderList() {
-  const all = records.filter(r=>r.scope===listScope).sort((a,b)=>b.date.localeCompare(a.date));
-  document.getElementById('alist').innerHTML = all.length===0
-    ? `<div class="empty">${tr('noRecAll')}</div>`
-    : all.map(r=>rowHTML(r)).join('');
+function dcSetPos(idx, animate) {
+  const track = document.getElementById('dc-track');
+  if (!track) return;
+  if (!animate) track.style.transition = 'none';
+  else track.style.transition = 'transform .32s cubic-bezier(.4,0,.2,1)';
+  track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+  // Update dots
+  document.querySelectorAll('.dc-dot').forEach((d,i) => d.classList.toggle('on', i===idx));
+  _dcIdx = idx;
+  // Re-enable transition
+  if (!animate) requestAnimationFrame(()=>{ if(track) track.style.transition=''; });
 }
 
-function rowHTML(r) {
-  const isInc = r.type === 'income';
-  const rc  = r.cur || 'HKD';
-  const main = fmt(convert(r.amount, rc, currency));
-  const sub  = rc !== currency ? fmt(r.amount, rc) : null;
-  const tp   = r.topicId ? topics.find(x=>x.id===r.topicId) : null;
-  const key  = getCatKey(r);
-  const col  = isInc ? 'var(--green)' : catColor(key);
-  const bg   = isInc ? 'rgba(54,240,154,.1)' : catColor(key)+'22';
-  const scope = r.scope || 'personal';
-  const type  = isInc ? 'income' : 'expense';
-  const label = getCatLabel(key, scope, type);
-  const meta  = [r.date, r.scope==='personal'?tr('personal'):tr('shared')];
-  if (tp) meta.push('📋 '+tp.name);
-
-  return `<div class="rrow" id="rw-${r.id}">
-    <div class="rico" style="background:${bg};color:${col}">${isInc?'＋':'↓'}</div>
-    <div class="rinfo">
-      <div class="rcat" style="color:${col}">${label}${r.note?`<span class="rnote"> · ${r.note}</span>`:''}</div>
-      <div class="rsub">${meta.join(' · ')}</div>
-    </div>
-    <div class="rright">
-      <div class="ramt" style="color:${isInc?'var(--green)':'var(--red)'}">
-        ${isInc?'+':'-'}${main}
-      </div>
-      ${sub?`<div class="rconv">${sub}</div>`:''}
-    </div>
-    <button class="rdel" onclick="delRec('${r.id}')">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
-    </button>
-  </div>`;
-}
-function delRec(id) {
-  records = records.filter(r=>r.id!==id); save();
-  const el = document.getElementById('rw-'+id); if(el) el.remove();
-  toast(tr('deleted')); render();
+function dcGoTo(idx) {
+  const total = document.querySelectorAll('.dc-slide').length;
+  if (idx < 0 || idx >= total) return;
+  dcSetPos(idx, true);
 }
 
-// ═══════════════════════════════════════════════════════
-// ADD FORM
-// ═══════════════════════════════════════════════════════
-function setAddScope(s) {
-  addScope = s;
-  ['personal','shared'].forEach(x=>document.getElementById('at-'+x).classList.toggle('on',x===s));
-  document.getElementById('topic-fl').style.display = s==='shared' ? '' : 'none';
-  if (s==='shared') refreshTopicSel();
-  updateCats();
-}
-function setAddType(tp) {
-  addType_ = tp;
-  ['expense','income'].forEach(x=>document.getElementById('ty-'+x).classList.toggle('on',x===tp));
-  updateCats();
-}
-function setCurrency(v) {
-  currency = v;
-  document.getElementById('acur').textContent = v;
-  document.getElementById('dcur').textContent = v;
-  save(); updateRatePrev(); render(); renderList();
-}
-function updateCats() {
-  const keys   = CAT_KEYS[addScope][addType_];
-  const labels = (CAT_LABELS[lang]||CAT_LABELS.en)[addScope][addType_];
-  document.getElementById('f-cat').innerHTML =
-    `<option value="">— ${tr('category')} —</option>`
-    + keys.map((k,i)=>`<option value="${k}">${labels[i]}</option>`).join('');
-}
-function updateRatePrev() {
-  const el = document.getElementById('rprev');
-  const a  = parseFloat(document.getElementById('f-amt').value);
-  if (!a || currency==='HKD') { el.textContent=''; return; }
-  el.textContent = `≈ ${fmt(convert(a,currency,'HKD'),'HKD')}`;
-}
-function addRecord() {
-  const amt    = parseFloat(document.getElementById('f-amt').value);
-  const catKey = document.getElementById('f-cat').value;
-  const date   = document.getElementById('f-date').value;
-  const note   = document.getElementById('f-note').value.trim();
-  const topicId= addScope==='shared' ? document.getElementById('f-topic').value : '';
-  if (!amt||amt<=0)  return toast(tr('eAmt'),false);
-  if (!catKey)       return toast(tr('eCat'),false);
-  if (!date)         return toast(tr('eDate'),false);
-  // Store catKey (language-independent) + display label for legacy compat
-  const labels = (CAT_LABELS[lang]||CAT_LABELS.en)[addScope][addType_];
-  const keys   = CAT_KEYS[addScope][addType_];
-  const catLabel = labels[keys.indexOf(catKey)] || catKey;
-  records.unshift({
-    id:Date.now().toString(), type:addType_, amount:amt, cur:currency,
-    catKey, category:catLabel, date, note, scope:addScope, topicId
+// Touch/swipe support
+function initCarouselSwipe() {
+  const wrap = document.getElementById('dc-wrap');
+  if (!wrap || wrap._swipeInit) return;
+  wrap._swipeInit = true;
+  let startX = 0, startY = 0, dragging = false, moved = false;
+
+  wrap.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    dragging = true; moved = false;
+  }, { passive: true });
+
+  wrap.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    const dx = e.touches[0].clientX - startX;
+    const dy = e.touches[0].clientY - startY;
+    if (!moved && Math.abs(dy) > Math.abs(dx)) { dragging = false; return; }
+    moved = true;
+    // Live drag feedback
+    const base = _dcIdx * 100;
+    const pct  = (dx / wrap.offsetWidth) * 100;
+    const track = document.getElementById('dc-track');
+    if (track) {
+      track.style.transition = 'none';
+      track.style.transform  = 'translateX(calc(-' + base + '% + ' + dx + 'px))';
+    }
+  }, { passive: true });
+
+  wrap.addEventListener('touchend', e => {
+    if (!dragging) return;
+    dragging = false;
+    const dx   = e.changedTouches[0].clientX - startX;
+    const total = document.querySelectorAll('.dc-slide').length;
+    const threshold = wrap.offsetWidth * 0.25;
+    if (dx < -threshold && _dcIdx < total - 1) dcGoTo(_dcIdx + 1);
+    else if (dx > threshold && _dcIdx > 0)     dcGoTo(_dcIdx - 1);
+    else dcSetPos(_dcIdx, true);
+  }, { passive: true });
+
+  // Mouse drag support for desktop/preview
+  wrap.addEventListener('mousedown', e => {
+    startX = e.clientX; dragging = true; moved = false;
+    e.preventDefault();
   });
-  records = records.filter(r=>new Date(r.date).getTime()>Date.now()-HY);
-  save();
-  document.getElementById('f-amt').value='';
-  document.getElementById('f-note').value='';
-  document.getElementById('f-cat').value='';
-  document.getElementById('rprev').textContent='';
+  wrap.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    moved = true;
+    const dx    = e.clientX - startX;
+    const base  = _dcIdx * 100;
+    const track = document.getElementById('dc-track');
+    if (track) { track.style.transition='none'; track.style.transform='translateX(calc(-'+base+'% + '+dx+'px))'; }
+  });
+  wrap.addEventListener('mouseup', e => {
+    if (!dragging) return;
+    dragging = false;
+    const dx    = e.clientX - startX;
+    const total = document.querySelectorAll('.dc-slide').length;
+    const threshold = 60;
+    if (dx < -threshold && _dcIdx < total-1) dcGoTo(_dcIdx+1);
+    else if (dx > threshold && _dcIdx > 0)   dcGoTo(_dcIdx-1);
+    else dcSetPos(_dcIdx, true);
+  });
+  wrap.addEventListener('mouseleave', e => { if(dragging){ dragging=false; dcSetPos(_dcIdx,true); } });
+}
+
+// ---- Donut ----
+function buildDonut(cats,total,scope,type,parentKey){
+  if(!total||!cats.length) return '';
+  const R=52,r=33,cx=60,cy=60,sz=120; let paths='',angle=-Math.PI/2;
+  const slices=cats.slice(0,9); const rest=cats.slice(9).reduce((s,[,v])=>s+v,0);
+  if(rest>0) slices.push(['__others__',rest]);
+  slices.forEach(([key,val])=>{
+    const pct=val/total, sw=pct*2*Math.PI;
+    const x1=cx+R*Math.cos(angle),y1=cy+R*Math.sin(angle),x2=cx+R*Math.cos(angle+sw),y2=cy+R*Math.sin(angle+sw);
+    const x3=cx+r*Math.cos(angle+sw),y3=cy+r*Math.sin(angle+sw),x4=cx+r*Math.cos(angle),y4=cy+r*Math.sin(angle);
+    const lg=sw>Math.PI?1:0, col=catColor(key);
+    if(pct>0.001) paths+='<path d="M'+x1+','+y1+'A'+R+','+R+' 0 '+lg+',1 '+x2+','+y2+'L'+x3+','+y3+'A'+r+','+r+' 0 '+lg+',0 '+x4+','+y4+'Z" fill="'+col+'" stroke="var(--bg)" stroke-width="1.5"/>';
+    angle+=sw;
+  });
+  const dispTotal=fmt(total).replace('HK$','$').replace('US$','$');
+  const legendHTML=slices.map(([key,val])=>{
+    const pct=Math.round(val/total*100), col=catColor(key);
+    let label;
+    if (key==='__others__') { label = lang==='zh'?'\u5176\u4ED6':'Others'; }
+    else if (parentKey && SHARED_SUB[parentKey]) {
+      // sub-category slide: look up label from SHARED_SUB
+      const found = SHARED_SUB[parentKey].find(s=>s.k===key);
+      label = found ? (lang==='zh'?found.zh:found.en) : key;
+    } else {
+      // overview slide: may be sub-key or main key
+      const subLabel = getSubLabel(key);
+      label = subLabel !== key ? subLabel : getCatLabel(key,scope,type);
+    }
+    return '<div class="lrow"><div class="ldot" style="background:'+col+'"></div><div class="lname">'+label+'</div><div class="lpct">'+pct+'%</div><div class="lamt" style="color:'+col+'">'+fmt(val)+'</div></div>';
+  }).join('');
+  return '<div class="dwrap"><svg width="'+sz+'" height="'+sz+'" viewBox="0 0 '+sz+' '+sz+'" style="flex-shrink:0">'+paths+'<circle cx="'+cx+'" cy="'+cy+'" r="'+(r-2)+'" fill="var(--bg3)"/><text x="'+cx+'" y="'+(cy-4)+'" text-anchor="middle" font-size="9" fill="var(--muted)" font-family="DM Sans">'+tr('expense')+'</text><text x="'+cx+'" y="'+(cy+9)+'" text-anchor="middle" font-size="11" fill="var(--text)" font-family="DM Sans" font-weight="800">'+dispTotal+'</text></svg><div class="dleg">'+legendHTML+'</div></div>';
+}
+
+// ---- List ----
+function setListTab(s){ listScope=s; ['personal','shared'].forEach(x=>document.getElementById('lt-'+x).classList.toggle('on',x===s)); renderList(); }
+function renderList(){
+  const all=records.filter(r=>r.scope===listScope).sort((a,b)=>b.date.localeCompare(a.date));
+  document.getElementById('alist').innerHTML=all.length===0?'<div class="empty">'+tr('noRecAll')+'</div>':all.map(r=>rowHTML(r)).join('');
+}
+function rowHTML(r){
+  const isInc=r.type==='income', rc=r.cur||'HKD';
+  const main=fmt(convert(r.amount,rc,currency)), sub=rc!==currency?fmt(r.amount,rc):null;
+  const tp=r.topicId?topics.find(x=>x.id===r.topicId):null;
+  const key=getCatKey(r), col=isInc?'var(--green)':catColor(key), bg=isInc?'rgba(54,240,154,.1)':catColor(key)+'22';
+  const sc=r.scope||'personal', tp2=isInc?'income':'expense', label=getFullCatLabel(r);
+  const meta=[r.date, r.scope==='personal'?tr('personal'):tr('shared')];
+  if(tp) meta.push('P '+tp.name);
+  const editSvg='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>';
+  const delSvg='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>';
+  return '<div class="rrow" id="rw-'+r.id+'">'
+    +'<div class="rico" style="background:'+bg+';color:'+col+'">'+(isInc?'+':'v')+'</div>'
+    +'<div class="rinfo">'
+      +'<div class="rcat" style="color:'+col+'">'+label+(r.note?'<span class="rnote"> · '+r.note+'</span>':'')+'</div>'
+      +'<div class="rsub">'+meta.join(' · ')+'</div>'
+    +'</div>'
+    +'<div class="rright">'
+      +'<div class="ramt" style="color:'+(isInc?'var(--green)':'var(--red)')+'"> '+(isInc?'+':'-')+main+'</div>'
+      +(sub?'<div class="rconv">'+sub+'</div>':'')
+    +'</div>'
+    +'<button class="rdel" data-id="'+r.id+'" data-kind="0" onclick="openEditModal(0,this.dataset.id)" style="color:var(--accent)" title="edit">'+editSvg+'</button>'
+    +'<button class="rdel" onclick="delRec(\''+r.id+'\')" >'+delSvg+'</button>'
+    +'</div>';
+}
+function delRec(id){ records=records.filter(r=>r.id!==id); save(); const el=document.getElementById('rw-'+id); if(el) el.remove(); toast(tr('deleted')); render(); }
+
+// ---- Add form ----
+function setAddScope(s){
+  addScope=s; ['personal','shared','debt'].forEach(x=>document.getElementById('at-'+x).classList.toggle('on',x===s));
+  const isDebt=s==='debt';
+  document.getElementById('debt-add-fields').style.display=isDebt?'':'none';
+  document.getElementById('normal-add-fields').style.display=isDebt?'none':'';
+  document.getElementById('topic-fl').style.display=s==='shared'?'':'none';
+  if(s==='shared') refreshTopicSel();
+  if(!isDebt) updateCats();
+}
+function setAddType(tp){ addType_=tp; ['expense','income'].forEach(x=>document.getElementById('ty-'+x).classList.toggle('on',x===tp)); updateCats(); }
+function setCurrency(v){
+  currency=v;
+  document.getElementById('acur').textContent=v; document.getElementById('d-acur').textContent=v; document.getElementById('dcur').textContent=v;
+  save(); updateRatePrev(); render(); renderList(); if(dashScope==='debt') renderDebtDash();
+}
+function updateCats(){
+  const keys=CAT_KEYS[addScope]&&CAT_KEYS[addScope][addType_]?CAT_KEYS[addScope][addType_]:[];
+  const labels=(CAT_LABELS[lang]||CAT_LABELS.en)[addScope]&&(CAT_LABELS[lang]||CAT_LABELS.en)[addScope][addType_]?(CAT_LABELS[lang]||CAT_LABELS.en)[addScope][addType_]:[];
+  document.getElementById('f-cat').innerHTML='<option value="">-- '+tr('category')+' --</option>'+keys.map((k,i)=>'<option value="'+k+'">'+labels[i]+'</option>').join('');
+  // Hide sub-cat when cats refreshed
+  document.getElementById('subcat-fl').style.display='none';
+}
+function updateRatePrev(){
+  const el=document.getElementById('rprev'), a=parseFloat(document.getElementById('f-amt').value);
+  if(!a||currency==='HKD'){el.textContent='';return;} el.textContent='approx '+fmt(convert(a,currency,'HKD'),'HKD');
+}
+function addRecord(){
+  const amt=parseFloat(document.getElementById('f-amt').value), catKey=document.getElementById('f-cat').value;
+  const date=document.getElementById('f-date').value, note=document.getElementById('f-note').value.trim();
+  const topicId=addScope==='shared'?document.getElementById('f-topic').value:'';
+  if(!amt||amt<=0) return toast(tr('eAmt'),false);
+  if(!catKey) return toast(tr('eCat'),false);
+  if(!date) return toast(tr('eDate'),false);
+  const labels=(CAT_LABELS[lang]||CAT_LABELS.en)[addScope][addType_], keys=CAT_KEYS[addScope][addType_];
+  const catLabel=labels[keys.indexOf(catKey)]||catKey;
+  const subKey = (addScope==='shared' && addType_==='expense' && SHARED_SUB[catKey])
+    ? (document.getElementById('f-subcat').value || '')
+    : '';
+  records.unshift({id:Date.now().toString(),type:addType_,amount:amt,cur:currency,catKey,category:catLabel,subKey,date,note,scope:addScope,topicId});
+  records=records.filter(r=>new Date(r.date).getTime()>Date.now()-HY);
+  save(); document.getElementById('f-amt').value=''; document.getElementById('f-note').value=''; document.getElementById('f-cat').value=''; document.getElementById('rprev').textContent='';
   toast(tr('saved')); goPage('dashboard');
 }
 
-// ═══════════════════════════════════════════════════════
-// EXPORT
-// ═══════════════════════════════════════════════════════
-function exportCSV() {
-  const rows = [['Date','Type','Amount','Currency','HKD Equiv','Category Key','Category','Note','Account','Topic']];
-  [...records].sort((a,b)=>a.date.localeCompare(b.date)).forEach(r => {
-    const tp  = r.topicId ? topics.find(x=>x.id===r.topicId) : null;
-    const key = getCatKey(r);
-    rows.push([r.date, r.type==='income'?'Income':'Expense', r.amount, r.cur||'HKD',
-      Math.round(toHKD(r.amount,r.cur||'HKD')*10)/10,
-      key, r.category||'', r.note||'',
-      r.scope==='personal'?'Personal':'Shared', tp?tp.name:''
-    ]);
+// ---- DEBT ----
+function setDebtType(t){
+  debtType_=t; ['lent','borrowed','repaid_me','i_repaid'].forEach(x=>{ const el=document.getElementById('dty-'+x); if(el) el.classList.toggle('on',x===t); });
+}
+function addDebtRecord(){
+  const amt=parseFloat(document.getElementById('d-amt').value), person=document.getElementById('d-person').value.trim();
+  const date=document.getElementById('d-date').value, note=document.getElementById('d-note').value.trim();
+  if(!amt||amt<=0) return toast(tr('eAmt'),false);
+  if(!person) return toast(tr('ePerson'),false);
+  if(!date) return toast(tr('eDate'),false);
+  debts.unshift({id:Date.now().toString(),dtype:debtType_,amount:amt,cur:currency,person,date,note});
+  save(); document.getElementById('d-amt').value=''; document.getElementById('d-person').value=''; document.getElementById('d-note').value=''; document.getElementById('d-rprev').textContent='';
+  toast(tr('saved')); goPage('dashboard'); setDashTab('debt');
+}
+function computeDebtByPerson(){
+  const map={};
+  debts.forEach(d=>{
+    if(!map[d.person]) map[d.person]={lent:0,borrowed:0,repaidMe:0,iRepaid:0};
+    const a=convert(d.amount,d.cur||'HKD',currency);
+    if(d.dtype==='lent') map[d.person].lent+=a;
+    if(d.dtype==='borrowed') map[d.person].borrowed+=a;
+    if(d.dtype==='repaid_me') map[d.person].repaidMe+=a;
+    if(d.dtype==='i_repaid') map[d.person].iRepaid+=a;
   });
-  const csv = rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
-  const url = URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'}));
-  const a = document.createElement('a'); a.href=url; a.download=`MoneyLog_${today()}.csv`; a.click();
-  URL.revokeObjectURL(url); toast(tr('exported'));
+  return Object.entries(map).map(([name,v])=>{
+    const theyOweMe=v.lent-v.repaidMe, iOweThem=v.borrowed-v.iRepaid;
+    return {name,theyOweMe,iOweThem,net:theyOweMe-iOweThem,raw:v};
+  }).sort((a,b)=>Math.abs(b.net)-Math.abs(a.net));
+}
+function renderDebtDash(){
+  const persons=computeDebtByPerson();
+  const totalOwedMe=persons.reduce((s,p)=>s+Math.max(0,p.net),0);
+  const totalIOwe=persons.reduce((s,p)=>s+Math.max(0,-p.net),0);
+  const netPos=totalOwedMe-totalIOwe;
+  document.getElementById('d-owed-me').textContent=fmt(totalOwedMe);
+  document.getElementById('d-i-owe').textContent=fmt(totalIOwe);
+  document.getElementById('d-net').textContent=fmt(Math.abs(netPos));
+  document.getElementById('d-net').style.color=netPos>0?'var(--green)':netPos<0?'var(--red)':'var(--muted)';
+  document.getElementById('d-net-label').textContent=netPos>0?tr('netPositive'):netPos<0?tr('netNegative'):tr('netZero');
+  const el=document.getElementById('d-person-list');
+  if(!persons.length){el.innerHTML='<div class="empty">'+tr('noRec')+'</div>';return;}
+  el.innerHTML=persons.map(p=>{
+    const nc=p.net>0?'var(--green)':p.net<0?'var(--red)':'var(--muted)';
+    const nl=p.net>0?(lang==='zh'?'\u6B20\u6211':' owes me'):p.net<0?(lang==='zh'?'\u6211\u6B20\u4F60':' I owe'):(lang==='zh'?'\u5DF2\u7D50\u6E05':'Settled');
+    const rows=[];
+    if(p.raw.lent>0) rows.push([lang==='zh'?'\u501F\u51FA':'Lent out',fmt(p.raw.lent),'var(--green)']);
+    if(p.raw.repaidMe>0) rows.push([lang==='zh'?'\u5DF2\u6536\u56DE':'Repaid me',fmt(p.raw.repaidMe),'var(--muted)']);
+    if(p.raw.borrowed>0) rows.push([lang==='zh'?'\u501F\u5165':'Borrowed',fmt(p.raw.borrowed),'var(--red)']);
+    if(p.raw.iRepaid>0) rows.push([lang==='zh'?'\u5DF2\u9084\u6B3E':'I repaid',fmt(p.raw.iRepaid),'var(--muted)']);
+    const initials=p.name.charAt(0).toUpperCase();
+    return '<div class="dpc"><div class="dpname"><div style="width:28px;height:28px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--accent)">'+initials+'</div><span>'+p.name+'</span></div>'+rows.map(([l,v,c])=>'<div class="dprow"><span>'+l+'</span><span style="color:'+c+';font-weight:700">'+v+'</span></div>').join('')+'<div class="dpnet" style="color:'+nc+'">'+(Math.abs(p.net)<0.1?'Settled':fmt(Math.abs(p.net))+' '+nl)+'</div></div>';
+  }).join('');
+  const recent=[...debts].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,5);
+  document.getElementById('d-recent-list').innerHTML=recent.length===0?'<div class="empty">'+tr('noRec')+'</div>':recent.map(d=>debtRowHTML(d)).join('');
+}
+function renderDebtList(){
+  const sorted=[...debts].sort((a,b)=>b.date.localeCompare(a.date));
+  document.getElementById('dalist').innerHTML=sorted.length===0?'<div class="empty">'+tr('noRec')+'</div>':sorted.map(d=>debtRowHTML(d)).join('');
+}
+const DTYPE_CFG={lent:{icon:'+',bg:'rgba(54,240,154,.12)',col:'var(--green)'},borrowed:{icon:'v',bg:'rgba(255,64,96,.12)',col:'var(--red)'},repaid_me:{icon:'<',bg:'rgba(76,184,245,.12)',col:'#4CB8F5'},i_repaid:{icon:'>',bg:'rgba(168,125,255,.12)',col:'#A87DFF'}};
+function dtypeLabel(dt){ const m={lent:['\u501F\u51FA','Lent Out'],borrowed:['\u501F\u5165','Borrowed'],repaid_me:['\u5C0D\u65B9\u9084\u6211','Repaid Me'],i_repaid:['\u6211\u9084\u5C0D\u65B9','I Repaid']}; return (m[dt]||[dt,dt])[lang==='zh'?0:1]; }
+function debtRowHTML(d){
+  const cfg=DTYPE_CFG[d.dtype]||DTYPE_CFG.lent, rc=d.cur||'HKD';
+  const main=fmt(convert(d.amount,rc,currency)), sub=rc!==currency?fmt(d.amount,rc):null;
+  const editSvg='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>';
+  const delSvg='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>';
+  return '<div class="rrow" id="drw-'+d.id+'">'
+    +'<div class="rico" style="background:'+cfg.bg+';color:'+cfg.col+';font-size:16px">'+cfg.icon+'</div>'
+    +'<div class="rinfo">'
+      +'<div class="rcat" style="color:'+cfg.col+'">'+d.person+(d.note?'<span class="rnote"> · '+d.note+'</span>':'')+'</div>'
+      +'<div class="rsub">'+d.date+' · '+dtypeLabel(d.dtype)+'</div>'
+    +'</div>'
+    +'<div class="rright">'
+      +'<div class="ramt" style="color:'+cfg.col+'">'+main+'</div>'
+      +(sub?'<div class="rconv">'+sub+'</div>':'')
+    +'</div>'
+    +'<button class="rdel" onclick="openEditModal(1,this.dataset.id)" data-id="'+d.id+'" style="color:var(--accent)" title="edit">'+editSvg+'</button>'
+    +'<button class="rdel" onclick="delDebt(\''+d.id+'\')">'+delSvg+'</button>'
+    +'</div>';
+}
+function delDebt(id){ debts=debts.filter(d=>d.id!==id); save(); const el=document.getElementById('drw-'+id); if(el) el.remove(); toast(tr('deleted')); renderDebtDash(); }
+
+
+// ---- EDIT MODAL ----
+let editId = null;    // id of record being edited
+let editKind = null;  // 'rec' or 'debt'
+let editScope = null; // scope of the record (for category list)
+let editDebtType_ = 'lent';
+
+function openEditModal(kindNum, id) {
+  const kind = kindNum===0 ? 'rec' : 'debt';
+  editId = id; editKind = kind;
+  document.getElementById('editModal').style.display = 'flex';
+  document.getElementById('edit-normal-fields').style.display = kind==='rec' ? '' : 'none';
+  document.getElementById('edit-debt-fields').style.display   = kind==='debt' ? '' : 'none';
+  // Translate buttons
+  document.querySelectorAll('#editModal [data-t]').forEach(el => { el.textContent = tr(el.dataset.t); });
+
+  if (kind === 'rec') {
+    const r = records.find(x => x.id === id);
+    if (!r) return;
+    editScope = r.scope;
+    document.getElementById('e-cur-label').textContent = r.cur || currency;
+    document.getElementById('e-amount').value = r.amount;
+    document.getElementById('e-date').value   = r.date;
+    document.getElementById('e-note').value   = r.note || '';
+    // Set type tabs
+    setEditType(r.type);
+    // Populate category dropdown for this scope+type
+    buildEditCatList(r.scope, r.type, getCatKey(r));
+    // Populate sub-category if applicable
+    if (r.scope === 'shared' && r.type === 'expense' && SHARED_SUB[getCatKey(r)]) {
+      buildSubCatOptions(getCatKey(r), 'e-subcat', r.subKey || null);
+    } else {
+      document.getElementById('e-subcat-fl').style.display = 'none';
+    }
+  } else {
+    const d = debts.find(x => x.id === id);
+    if (!d) return;
+    document.getElementById('e-debt-cur-label').textContent = d.cur || currency;
+    document.getElementById('e-debt-amount').value = d.amount;
+    document.getElementById('e-debt-date').value   = d.date;
+    document.getElementById('e-debt-note').value   = d.note || '';
+    document.getElementById('e-person').value      = d.person || '';
+    setEditDebtType(d.dtype || 'lent');
+  }
 }
 
-// ═══════════════════════════════════════════════════════
-// TOAST
-// ═══════════════════════════════════════════════════════
+function setEditType(tp) {
+  ['expense','income'].forEach(x => document.getElementById('ety-'+x).classList.toggle('on', x===tp));
+  buildEditCatList(editScope, tp, null);
+}
+function setEditDebtType(tp) {
+  editDebtType_ = tp;
+  ['lent','borrowed','repaid_me','i_repaid'].forEach(x => {
+    const el = document.getElementById('edty-'+x);
+    if (el) el.classList.toggle('on', x===tp);
+  });
+}
+function buildEditCatList(scope, type, selectedKey) {
+  const keys   = CAT_KEYS[scope] && CAT_KEYS[scope][type] ? CAT_KEYS[scope][type] : [];
+  const labels = (CAT_LABELS[lang]||CAT_LABELS.en)[scope] && (CAT_LABELS[lang]||CAT_LABELS.en)[scope][type]
+    ? (CAT_LABELS[lang]||CAT_LABELS.en)[scope][type] : [];
+  const sel = document.getElementById('e-cat');
+  sel.innerHTML = keys.map((k,i) => '<option value="'+k+'"'+(k===selectedKey?' selected':'')+'>'+labels[i]+'</option>').join('');
+  // Hide sub-cat by default; openEditModal will show it if needed
+  document.getElementById('e-subcat-fl').style.display = 'none';
+}
+
+function closeEditModal() {
+  document.getElementById('editModal').style.display = 'none';
+  editId = null; editKind = null;
+}
+
+function saveEdit() {
+  if (editKind === 'rec') {
+    const r = records.find(x => x.id === editId);
+    if (!r) return;
+    const amt = parseFloat(document.getElementById('e-amount').value);
+    const catKey = document.getElementById('e-cat').value;
+    const date   = document.getElementById('e-date').value;
+    const note   = document.getElementById('e-note').value.trim();
+    const type   = document.getElementById('ety-expense').classList.contains('on') ? 'expense' : 'income';
+    if (!amt || amt <= 0) return toast(tr('eAmt'), false);
+    if (!catKey) return toast(tr('eCat'), false);
+    if (!date)   return toast(tr('eDate'), false);
+    const labels = (CAT_LABELS[lang]||CAT_LABELS.en)[r.scope][type];
+    const keys   = CAT_KEYS[r.scope][type];
+    r.type     = type;
+    r.amount   = amt;
+    r.catKey   = catKey;
+    r.category = labels[keys.indexOf(catKey)] || catKey;
+    r.subKey   = (r.scope==='shared' && type==='expense' && SHARED_SUB[catKey])
+      ? (document.getElementById('e-subcat').value || '') : '';
+    r.date     = date;
+    r.note     = note;
+  } else {
+    const d = debts.find(x => x.id === editId);
+    if (!d) return;
+    const amt    = parseFloat(document.getElementById('e-debt-amount').value);
+    const person = document.getElementById('e-person').value.trim();
+    const date   = document.getElementById('e-debt-date').value;
+    const note   = document.getElementById('e-debt-note').value.trim();
+    if (!amt || amt <= 0) return toast(tr('eAmt'), false);
+    if (!person) return toast(tr('ePerson'), false);
+    if (!date)   return toast(tr('eDate'), false);
+    d.dtype  = editDebtType_;
+    d.amount = amt;
+    d.person = person;
+    d.date   = date;
+    d.note   = note;
+  }
+  save();
+  closeEditModal();
+  toast(tr('saved'));
+  render(); renderList();
+  if (dashScope === 'debt') renderDebtDash();
+  renderDebtList();
+}
+
+
+// ---- SUB-CATEGORIES (shared expense) ----
+function getSubLabel(subKey) {
+  // Find the sub-entry across all parent cats
+  for (const subs of Object.values(SHARED_SUB)) {
+    const found = subs.find(s => s.k === subKey);
+    if (found) return lang === 'zh' ? found.zh : found.en;
+  }
+  return subKey;
+}
+
+function buildSubCatOptions(parentKey, selId, selectedSubKey) {
+  const fl = document.getElementById(selId === 'f-subcat' ? 'subcat-fl' : 'e-subcat-fl');
+  const sel = document.getElementById(selId);
+  const subs = SHARED_SUB[parentKey];
+  if (!subs) { fl.style.display = 'none'; return; }
+  fl.style.display = '';
+  sel.innerHTML = subs.map(s =>
+    '<option value="'+s.k+'"'+(s.k===selectedSubKey?' selected':'')+'>'+
+    (lang==='zh'?s.zh:s.en)+'</option>'
+  ).join('');
+}
+
+function onMainCatChange() {
+  const key = document.getElementById('f-cat').value;
+  // Show sub-cat only for shared expense
+  if (addScope === 'shared' && addType_ === 'expense' && SHARED_SUB[key]) {
+    buildSubCatOptions(key, 'f-subcat', null);
+  } else {
+    document.getElementById('subcat-fl').style.display = 'none';
+  }
+}
+
+function onEditMainCatChange() {
+  const key = document.getElementById('e-cat').value;
+  const r = editId ? records.find(x => x.id === editId) : null;
+  if (r && r.scope === 'shared' && SHARED_SUB[key]) {
+    buildSubCatOptions(key, 'e-subcat', r.subKey || null);
+  } else {
+    document.getElementById('e-subcat-fl').style.display = 'none';
+  }
+}
+
+// Helper: get display label combining main cat + sub cat
+function getFullCatLabel(r) {
+  const scope = r.scope || 'personal';
+  const type  = r.type === 'income' ? 'income' : 'expense';
+  const mainLabel = getCatLabel(getCatKey(r), scope, type);
+  if (r.subKey) {
+    const subLabel = getSubLabel(r.subKey);
+    return mainLabel + ' · ' + subLabel;
+  }
+  return mainLabel;
+}
+
+// ---- Export ----
+function exportCSV(){
+  const rows=[['Date','Type','Amount','Currency','HKD Equiv','Category Key','Category','Sub-category','Note','Account','Topic']];
+  [...records].sort((a,b)=>a.date.localeCompare(b.date)).forEach(r=>{
+    const tp=r.topicId?topics.find(x=>x.id===r.topicId):null, key=getCatKey(r);
+    const subLabel = r.subKey ? getSubLabel(r.subKey) : '';
+    rows.push([r.date,r.type==='income'?'Income':'Expense',r.amount,r.cur||'HKD',Math.round(toHKD(r.amount,r.cur||'HKD')*10)/10,key,r.category||'',subLabel,r.note||'',r.scope==='personal'?'Personal':'Shared',tp?tp.name:'']);
+  });
+  rows.push([]); rows.push(['--- DEBT RECORDS ---']); rows.push(['Date','Type','Person','Amount','Currency','HKD Equiv','Note']);
+  [...debts].sort((a,b)=>a.date.localeCompare(b.date)).forEach(d=>{ rows.push([d.date,dtypeLabel(d.dtype),d.person,d.amount,d.cur||'HKD',Math.round(toHKD(d.amount,d.cur||'HKD')*10)/10,d.note||'']); });
+  const csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const url=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'}));
+  const a=document.createElement('a'); a.href=url; a.download='MoneyLog_'+today()+'.csv'; a.click(); URL.revokeObjectURL(url); toast(tr('exported'));
+}
+
+// ---- Toast ----
 let _tt;
-function toast(msg, ok=true) {
-  const el = document.getElementById('toast');
-  el.textContent=msg; el.style.display='block';
-  el.style.borderColor=ok?'rgba(124,111,255,.4)':'rgba(255,64,96,.4)';
-  el.style.color=ok?'#A89FFF':'var(--red)';
-  clearTimeout(_tt); _tt=setTimeout(()=>el.style.display='none',2200);
-}
+function toast(msg,ok=true){ const el=document.getElementById('toast'); el.textContent=msg; el.style.display='block'; el.style.borderColor=ok?'rgba(124,111,255,.4)':'rgba(255,64,96,.4)'; el.style.color=ok?'#A89FFF':'var(--red)'; clearTimeout(_tt); _tt=setTimeout(()=>el.style.display='none',2200); }
 
-// ═══════════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════════
+// ---- Init ----
 loadData();
-document.getElementById('fMonth').value = thisMonth();
-document.getElementById('fDay').value   = today();
-document.getElementById('f-date').value = today();
-document.getElementById('currSel').value= currency;
-document.getElementById('acur').textContent = currency;
-document.getElementById('f-amt').addEventListener('input', updateRatePrev);
+document.getElementById('fMonth').value=thisMonth();
+document.getElementById('fDay').value=today();
+document.getElementById('f-date').value=today();
+document.getElementById('d-date').value=today();
+document.getElementById('currSel').value=currency;
+document.getElementById('acur').textContent=currency;
+document.getElementById('d-acur').textContent=currency;
+document.getElementById('f-amt').addEventListener('input',updateRatePrev);
+document.getElementById('d-amt').addEventListener('input',function(){ const el=document.getElementById('d-rprev'),a=parseFloat(this.value); if(!a||currency==='HKD'){el.textContent='';return;} el.textContent='approx '+fmt(convert(a,currency,'HKD'),'HKD'); });
 applyLang();
 </script>
+
+<!-- EDIT RECORD MODAL -->
+<div class="overlay" id="editModal" style="display:none" onclick="if(event.target===this)closeEditModal()">
+  <div class="modal" onclick="event.stopPropagation()" style="max-height:90vh;overflow-y:auto">
+    <div class="mtitle" data-t="editRecord"></div>
+
+    <!-- Normal record edit -->
+    <div id="edit-normal-fields">
+      <div class="fl">
+        <label class="flabel" data-t="type"></label>
+        <div class="tabs">
+          <button class="tab" id="ety-expense" onclick="setEditType('expense')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            <span data-t="expense"></span>
+          </button>
+          <button class="tab" id="ety-income" onclick="setEditType('income')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            <span data-t="income"></span>
+          </button>
+        </div>
+      </div>
+      <div class="fl">
+        <label class="flabel"><span data-t="amount"></span> (<span id="e-cur-label">HKD</span>)</label>
+        <input class="inp" type="number" inputmode="decimal" id="e-amount">
+      </div>
+      <div class="fl">
+        <label class="flabel" data-t="category"></label>
+        <select class="inp" id="e-cat" onchange="onEditMainCatChange()"></select>
+      </div>
+      <div class="fl" id="e-subcat-fl" style="display:none">
+        <label class="flabel" data-t="subCategory"></label>
+        <select class="inp" id="e-subcat"></select>
+      </div>
+      <div class="fl">
+        <label class="flabel" data-t="date"></label>
+        <input class="inp" type="date" id="e-date">
+      </div>
+      <div class="fl">
+        <label class="flabel" data-t="note"></label>
+        <input class="inp" type="text" id="e-note">
+      </div>
+    </div>
+
+    <!-- Debt record edit -->
+    <div id="edit-debt-fields" style="display:none">
+      <div class="fl">
+        <label class="flabel" data-t="debtType"></label>
+        <div class="tabs">
+          <button class="tab" id="edty-lent" onclick="setEditDebtType('lent')"><span data-t="lentOut"></span></button>
+          <button class="tab" id="edty-borrowed" onclick="setEditDebtType('borrowed')"><span data-t="borrowed"></span></button>
+          <button class="tab" id="edty-repaid_me" onclick="setEditDebtType('repaid_me')"><span data-t="repaidMe"></span></button>
+          <button class="tab" id="edty-i_repaid" onclick="setEditDebtType('i_repaid')"><span data-t="iRepaid"></span></button>
+        </div>
+      </div>
+      <div class="fl">
+        <label class="flabel" data-t="personName"></label>
+        <input class="inp" type="text" id="e-person">
+      </div>
+      <div class="fl">
+        <label class="flabel"><span data-t="amount"></span> (<span id="e-debt-cur-label">HKD</span>)</label>
+        <input class="inp" type="number" inputmode="decimal" id="e-debt-amount">
+      </div>
+      <div class="fl">
+        <label class="flabel" data-t="date"></label>
+        <input class="inp" type="date" id="e-debt-date">
+      </div>
+      <div class="fl">
+        <label class="flabel" data-t="note"></label>
+        <input class="inp" type="text" id="e-debt-note">
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:4px">
+      <button class="sbtn" style="flex:1;justify-content:center" onclick="closeEditModal()" data-t="close"></button>
+      <button class="pbtn" style="flex:2" onclick="saveEdit()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        <span data-t="saveEdit"></span>
+      </button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
